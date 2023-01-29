@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:kt_dart/collection.dart';
 import 'package:task_manager/domain/core/failures.dart';
 Either<ValueFailure<String>,String> validateMaxStringLegth(String input,int maxLength){
   if(input.length<=maxLength){
@@ -23,13 +22,13 @@ return right(input);
 }
 }
 
-Either<ValueFailure<KtList<T>>,KtList<T>> validateMaxListLength<T>(KtList<T> input,int maxLength) {
- if(input.size<=maxLength){
-   return right(input);
- }else{
-   return left(ValueFailure.listTooLong(failedValue: input,max:maxLength));
- }
-}
+// Either<ValueFailure<KtList<T>>,KtList<T>> validateMaxListLength<T>(KtList<T> input,int maxLength) {
+//  if(input.size<=maxLength){
+//    return right(input);
+//  }else{
+//    return left(ValueFailure.listTooLong(failedValue: input,max:maxLength));
+//  }
+// }
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   const emailRegex =
   r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";

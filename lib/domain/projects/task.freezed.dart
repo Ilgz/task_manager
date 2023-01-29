@@ -18,7 +18,12 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Task {
   TaskName get taskName => throw _privateConstructorUsedError;
   bool get isDone => throw _privateConstructorUsedError;
-  TaskResponsibleUser get responsibleUser => throw _privateConstructorUsedError;
+  Timestamp get date => throw _privateConstructorUsedError;
+  bool get isNew => throw _privateConstructorUsedError;
+  Option<DocumentReference<Object?>> get responsibleUser =>
+      throw _privateConstructorUsedError;
+  Option<bool> get canBeModifiedAndIsAdmin =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TaskCopyWith<Task> get copyWith => throw _privateConstructorUsedError;
@@ -30,7 +35,12 @@ abstract class $TaskCopyWith<$Res> {
       _$TaskCopyWithImpl<$Res, Task>;
   @useResult
   $Res call(
-      {TaskName taskName, bool isDone, TaskResponsibleUser responsibleUser});
+      {TaskName taskName,
+      bool isDone,
+      Timestamp date,
+      bool isNew,
+      Option<DocumentReference<Object?>> responsibleUser,
+      Option<bool> canBeModifiedAndIsAdmin});
 }
 
 /// @nodoc
@@ -48,7 +58,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
   $Res call({
     Object? taskName = null,
     Object? isDone = null,
+    Object? date = null,
+    Object? isNew = null,
     Object? responsibleUser = null,
+    Object? canBeModifiedAndIsAdmin = null,
   }) {
     return _then(_value.copyWith(
       taskName: null == taskName
@@ -59,10 +72,22 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
               as bool,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as Timestamp,
+      isNew: null == isNew
+          ? _value.isNew
+          : isNew // ignore: cast_nullable_to_non_nullable
+              as bool,
       responsibleUser: null == responsibleUser
           ? _value.responsibleUser
           : responsibleUser // ignore: cast_nullable_to_non_nullable
-              as TaskResponsibleUser,
+              as Option<DocumentReference<Object?>>,
+      canBeModifiedAndIsAdmin: null == canBeModifiedAndIsAdmin
+          ? _value.canBeModifiedAndIsAdmin
+          : canBeModifiedAndIsAdmin // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
     ) as $Val);
   }
 }
@@ -74,7 +99,12 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {TaskName taskName, bool isDone, TaskResponsibleUser responsibleUser});
+      {TaskName taskName,
+      bool isDone,
+      Timestamp date,
+      bool isNew,
+      Option<DocumentReference<Object?>> responsibleUser,
+      Option<bool> canBeModifiedAndIsAdmin});
 }
 
 /// @nodoc
@@ -88,40 +118,69 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
   $Res call({
     Object? taskName = null,
     Object? isDone = null,
+    Object? date = null,
+    Object? isNew = null,
     Object? responsibleUser = null,
+    Object? canBeModifiedAndIsAdmin = null,
   }) {
     return _then(_$_Task(
-      null == taskName
+      taskName: null == taskName
           ? _value.taskName
           : taskName // ignore: cast_nullable_to_non_nullable
               as TaskName,
-      null == isDone
+      isDone: null == isDone
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
               as bool,
-      null == responsibleUser
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as Timestamp,
+      isNew: null == isNew
+          ? _value.isNew
+          : isNew // ignore: cast_nullable_to_non_nullable
+              as bool,
+      responsibleUser: null == responsibleUser
           ? _value.responsibleUser
           : responsibleUser // ignore: cast_nullable_to_non_nullable
-              as TaskResponsibleUser,
+              as Option<DocumentReference<Object?>>,
+      canBeModifiedAndIsAdmin: null == canBeModifiedAndIsAdmin
+          ? _value.canBeModifiedAndIsAdmin
+          : canBeModifiedAndIsAdmin // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Task implements _Task {
-  _$_Task(this.taskName, this.isDone, this.responsibleUser);
+class _$_Task extends _Task {
+  _$_Task(
+      {required this.taskName,
+      required this.isDone,
+      required this.date,
+      this.isNew = false,
+      required this.responsibleUser,
+      required this.canBeModifiedAndIsAdmin})
+      : super._();
 
   @override
   final TaskName taskName;
   @override
   final bool isDone;
   @override
-  final TaskResponsibleUser responsibleUser;
+  final Timestamp date;
+  @override
+  @JsonKey()
+  final bool isNew;
+  @override
+  final Option<DocumentReference<Object?>> responsibleUser;
+  @override
+  final Option<bool> canBeModifiedAndIsAdmin;
 
   @override
   String toString() {
-    return 'Task(taskName: $taskName, isDone: $isDone, responsibleUser: $responsibleUser)';
+    return 'Task(taskName: $taskName, isDone: $isDone, date: $date, isNew: $isNew, responsibleUser: $responsibleUser, canBeModifiedAndIsAdmin: $canBeModifiedAndIsAdmin)';
   }
 
   @override
@@ -132,13 +191,18 @@ class _$_Task implements _Task {
             (identical(other.taskName, taskName) ||
                 other.taskName == taskName) &&
             (identical(other.isDone, isDone) || other.isDone == isDone) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.isNew, isNew) || other.isNew == isNew) &&
             (identical(other.responsibleUser, responsibleUser) ||
-                other.responsibleUser == responsibleUser));
+                other.responsibleUser == responsibleUser) &&
+            (identical(
+                    other.canBeModifiedAndIsAdmin, canBeModifiedAndIsAdmin) ||
+                other.canBeModifiedAndIsAdmin == canBeModifiedAndIsAdmin));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, taskName, isDone, responsibleUser);
+  int get hashCode => Object.hash(runtimeType, taskName, isDone, date, isNew,
+      responsibleUser, canBeModifiedAndIsAdmin);
 
   @JsonKey(ignore: true)
   @override
@@ -147,16 +211,28 @@ class _$_Task implements _Task {
       __$$_TaskCopyWithImpl<_$_Task>(this, _$identity);
 }
 
-abstract class _Task implements Task {
-  factory _Task(final TaskName taskName, final bool isDone,
-      final TaskResponsibleUser responsibleUser) = _$_Task;
+abstract class _Task extends Task {
+  factory _Task(
+      {required final TaskName taskName,
+      required final bool isDone,
+      required final Timestamp date,
+      final bool isNew,
+      required final Option<DocumentReference<Object?>> responsibleUser,
+      required final Option<bool> canBeModifiedAndIsAdmin}) = _$_Task;
+  _Task._() : super._();
 
   @override
   TaskName get taskName;
   @override
   bool get isDone;
   @override
-  TaskResponsibleUser get responsibleUser;
+  Timestamp get date;
+  @override
+  bool get isNew;
+  @override
+  Option<DocumentReference<Object?>> get responsibleUser;
+  @override
+  Option<bool> get canBeModifiedAndIsAdmin;
   @override
   @JsonKey(ignore: true)
   _$$_TaskCopyWith<_$_Task> get copyWith => throw _privateConstructorUsedError;

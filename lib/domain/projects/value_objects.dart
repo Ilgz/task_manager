@@ -19,11 +19,3 @@ class TaskName extends ValueObject<String>{
   }
   const TaskName._(this.value);
 }
-class TaskResponsibleUser extends ValueObject<String>{
-  @override
-  final Either<ValueFailure<String>, String>  value;
-  factory TaskResponsibleUser(String input){
-    return TaskResponsibleUser._(validateStringNotEmpty(input));
-  }
-  const TaskResponsibleUser._(this.value);
-}

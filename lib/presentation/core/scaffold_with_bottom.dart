@@ -34,7 +34,7 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
 
   final List<Widget> _mainContents = [
     UsersOverviewPage(),
-    TasksOverviewPage(),
+    ProjectsOverviewPage(),
     ProfilePage()
   ];
 

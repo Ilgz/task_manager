@@ -16,7 +16,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._authFacade) : super(AuthState.initial()) {
     on<AuthEvent>((event, emit) async{
     await  event.map(authCheckRequested: (e)async{
-      print("authCheck");
       final userOption=await _authFacade.getSignedInUser();
              emit(userOption.fold(()=>AuthState.unAuthenticated(),(_)=>AuthState.authenticated()));
       }, signedOut: (e)async{

@@ -20,13 +20,19 @@ ProjectDto _$ProjectDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProjectDto {
-  String get projectName => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   bool get isPublic => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
   Timestamp get date => throw _privateConstructorUsedError;
+  @DocumentReferenceConverter()
+  DocumentReference<Object?> get owner => throw _privateConstructorUsedError;
+  @DocumentReferenceConverter()
   @JsonKey(ignore: true)
-  DocumentReference<Object?>? get owner => throw _privateConstructorUsedError;
-  List<User> get members => throw _privateConstructorUsedError;
+  DocumentReference<Object?>? get reference =>
+      throw _privateConstructorUsedError;
+  @DocumentReferenceConverter()
+  List<DocumentReference<Object?>> get members =>
+      throw _privateConstructorUsedError;
   List<TaskDto> get tasks => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,11 +48,17 @@ abstract class $ProjectDtoCopyWith<$Res> {
       _$ProjectDtoCopyWithImpl<$Res, ProjectDto>;
   @useResult
   $Res call(
-      {String projectName,
+      {String name,
       bool isPublic,
-      @ServerTimestampConverter() Timestamp date,
-      @JsonKey(ignore: true) DocumentReference<Object?>? owner,
-      List<User> members,
+      @ServerTimestampConverter()
+          Timestamp date,
+      @DocumentReferenceConverter()
+          DocumentReference<Object?> owner,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          DocumentReference<Object?>? reference,
+      @DocumentReferenceConverter()
+          List<DocumentReference<Object?>> members,
       List<TaskDto> tasks});
 }
 
@@ -63,17 +75,18 @@ class _$ProjectDtoCopyWithImpl<$Res, $Val extends ProjectDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? projectName = null,
+    Object? name = null,
     Object? isPublic = null,
     Object? date = null,
-    Object? owner = freezed,
+    Object? owner = null,
+    Object? reference = freezed,
     Object? members = null,
     Object? tasks = null,
   }) {
     return _then(_value.copyWith(
-      projectName: null == projectName
-          ? _value.projectName
-          : projectName // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       isPublic: null == isPublic
           ? _value.isPublic
@@ -83,14 +96,18 @@ class _$ProjectDtoCopyWithImpl<$Res, $Val extends ProjectDto>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as Timestamp,
-      owner: freezed == owner
+      owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>,
+      reference: freezed == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>?,
       members: null == members
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as List<DocumentReference<Object?>>,
       tasks: null == tasks
           ? _value.tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -108,11 +125,17 @@ abstract class _$$_ProjectDtoCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String projectName,
+      {String name,
       bool isPublic,
-      @ServerTimestampConverter() Timestamp date,
-      @JsonKey(ignore: true) DocumentReference<Object?>? owner,
-      List<User> members,
+      @ServerTimestampConverter()
+          Timestamp date,
+      @DocumentReferenceConverter()
+          DocumentReference<Object?> owner,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          DocumentReference<Object?>? reference,
+      @DocumentReferenceConverter()
+          List<DocumentReference<Object?>> members,
       List<TaskDto> tasks});
 }
 
@@ -127,17 +150,18 @@ class __$$_ProjectDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? projectName = null,
+    Object? name = null,
     Object? isPublic = null,
     Object? date = null,
-    Object? owner = freezed,
+    Object? owner = null,
+    Object? reference = freezed,
     Object? members = null,
     Object? tasks = null,
   }) {
     return _then(_$_ProjectDto(
-      projectName: null == projectName
-          ? _value.projectName
-          : projectName // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       isPublic: null == isPublic
           ? _value.isPublic
@@ -147,14 +171,18 @@ class __$$_ProjectDtoCopyWithImpl<$Res>
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as Timestamp,
-      owner: freezed == owner
+      owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>,
+      reference: freezed == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
               as DocumentReference<Object?>?,
       members: null == members
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<User>,
+              as List<DocumentReference<Object?>>,
       tasks: null == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -165,33 +193,45 @@ class __$$_ProjectDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ProjectDto implements _ProjectDto {
+class _$_ProjectDto extends _ProjectDto {
   _$_ProjectDto(
-      {required this.projectName,
+      {required this.name,
       required this.isPublic,
-      @ServerTimestampConverter() required this.date,
-      @JsonKey(ignore: true) this.owner,
-      required final List<User> members,
+      @ServerTimestampConverter()
+          required this.date,
+      @DocumentReferenceConverter()
+          required this.owner,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          this.reference,
+      @DocumentReferenceConverter()
+          required final List<DocumentReference<Object?>> members,
       required final List<TaskDto> tasks})
       : _members = members,
-        _tasks = tasks;
+        _tasks = tasks,
+        super._();
 
   factory _$_ProjectDto.fromJson(Map<String, dynamic> json) =>
       _$$_ProjectDtoFromJson(json);
 
   @override
-  final String projectName;
+  final String name;
   @override
   final bool isPublic;
   @override
   @ServerTimestampConverter()
   final Timestamp date;
   @override
-  @JsonKey(ignore: true)
-  final DocumentReference<Object?>? owner;
-  final List<User> _members;
+  @DocumentReferenceConverter()
+  final DocumentReference<Object?> owner;
   @override
-  List<User> get members {
+  @DocumentReferenceConverter()
+  @JsonKey(ignore: true)
+  final DocumentReference<Object?>? reference;
+  final List<DocumentReference<Object?>> _members;
+  @override
+  @DocumentReferenceConverter()
+  List<DocumentReference<Object?>> get members {
     if (_members is EqualUnmodifiableListView) return _members;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_members);
@@ -207,7 +247,7 @@ class _$_ProjectDto implements _ProjectDto {
 
   @override
   String toString() {
-    return 'ProjectDto(projectName: $projectName, isPublic: $isPublic, date: $date, owner: $owner, members: $members, tasks: $tasks)';
+    return 'ProjectDto(name: $name, isPublic: $isPublic, date: $date, owner: $owner, reference: $reference, members: $members, tasks: $tasks)';
   }
 
   @override
@@ -215,12 +255,13 @@ class _$_ProjectDto implements _ProjectDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ProjectDto &&
-            (identical(other.projectName, projectName) ||
-                other.projectName == projectName) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.isPublic, isPublic) ||
                 other.isPublic == isPublic) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.reference, reference) ||
+                other.reference == reference) &&
             const DeepCollectionEquality().equals(other._members, _members) &&
             const DeepCollectionEquality().equals(other._tasks, _tasks));
   }
@@ -229,10 +270,11 @@ class _$_ProjectDto implements _ProjectDto {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      projectName,
+      name,
       isPublic,
       date,
       owner,
+      reference,
       const DeepCollectionEquality().hash(_members),
       const DeepCollectionEquality().hash(_tasks));
 
@@ -250,30 +292,42 @@ class _$_ProjectDto implements _ProjectDto {
   }
 }
 
-abstract class _ProjectDto implements ProjectDto {
+abstract class _ProjectDto extends ProjectDto {
   factory _ProjectDto(
-      {required final String projectName,
+      {required final String name,
       required final bool isPublic,
-      @ServerTimestampConverter() required final Timestamp date,
-      @JsonKey(ignore: true) final DocumentReference<Object?>? owner,
-      required final List<User> members,
+      @ServerTimestampConverter()
+          required final Timestamp date,
+      @DocumentReferenceConverter()
+          required final DocumentReference<Object?> owner,
+      @DocumentReferenceConverter()
+      @JsonKey(ignore: true)
+          final DocumentReference<Object?>? reference,
+      @DocumentReferenceConverter()
+          required final List<DocumentReference<Object?>> members,
       required final List<TaskDto> tasks}) = _$_ProjectDto;
+  _ProjectDto._() : super._();
 
   factory _ProjectDto.fromJson(Map<String, dynamic> json) =
       _$_ProjectDto.fromJson;
 
   @override
-  String get projectName;
+  String get name;
   @override
   bool get isPublic;
   @override
   @ServerTimestampConverter()
   Timestamp get date;
   @override
-  @JsonKey(ignore: true)
-  DocumentReference<Object?>? get owner;
+  @DocumentReferenceConverter()
+  DocumentReference<Object?> get owner;
   @override
-  List<User> get members;
+  @DocumentReferenceConverter()
+  @JsonKey(ignore: true)
+  DocumentReference<Object?>? get reference;
+  @override
+  @DocumentReferenceConverter()
+  List<DocumentReference<Object?>> get members;
   @override
   List<TaskDto> get tasks;
   @override
@@ -288,11 +342,12 @@ TaskDto _$TaskDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TaskDto {
-  String get name => throw _privateConstructorUsedError;
-  bool get isDone => throw _privateConstructorUsedError;
+  String get itemName => throw _privateConstructorUsedError;
+  bool get complete => throw _privateConstructorUsedError;
   @ServerTimestampConverter()
   Timestamp get date => throw _privateConstructorUsedError;
-  String get responsibleUser => throw _privateConstructorUsedError;
+  @DocumentReferenceConverter()
+  DocumentReference<Object?>? get owner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -305,10 +360,10 @@ abstract class $TaskDtoCopyWith<$Res> {
       _$TaskDtoCopyWithImpl<$Res, TaskDto>;
   @useResult
   $Res call(
-      {String name,
-      bool isDone,
+      {String itemName,
+      bool complete,
       @ServerTimestampConverter() Timestamp date,
-      String responsibleUser});
+      @DocumentReferenceConverter() DocumentReference<Object?>? owner});
 }
 
 /// @nodoc
@@ -324,28 +379,28 @@ class _$TaskDtoCopyWithImpl<$Res, $Val extends TaskDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? isDone = null,
+    Object? itemName = null,
+    Object? complete = null,
     Object? date = null,
-    Object? responsibleUser = null,
+    Object? owner = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      itemName: null == itemName
+          ? _value.itemName
+          : itemName // ignore: cast_nullable_to_non_nullable
               as String,
-      isDone: null == isDone
-          ? _value.isDone
-          : isDone // ignore: cast_nullable_to_non_nullable
+      complete: null == complete
+          ? _value.complete
+          : complete // ignore: cast_nullable_to_non_nullable
               as bool,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as Timestamp,
-      responsibleUser: null == responsibleUser
-          ? _value.responsibleUser
-          : responsibleUser // ignore: cast_nullable_to_non_nullable
-              as String,
+      owner: freezed == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
     ) as $Val);
   }
 }
@@ -358,10 +413,10 @@ abstract class _$$_TaskDtoCopyWith<$Res> implements $TaskDtoCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name,
-      bool isDone,
+      {String itemName,
+      bool complete,
       @ServerTimestampConverter() Timestamp date,
-      String responsibleUser});
+      @DocumentReferenceConverter() DocumentReference<Object?>? owner});
 }
 
 /// @nodoc
@@ -374,28 +429,28 @@ class __$$_TaskDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? isDone = null,
+    Object? itemName = null,
+    Object? complete = null,
     Object? date = null,
-    Object? responsibleUser = null,
+    Object? owner = freezed,
   }) {
     return _then(_$_TaskDto(
-      null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      null == itemName
+          ? _value.itemName
+          : itemName // ignore: cast_nullable_to_non_nullable
               as String,
-      null == isDone
-          ? _value.isDone
-          : isDone // ignore: cast_nullable_to_non_nullable
+      null == complete
+          ? _value.complete
+          : complete // ignore: cast_nullable_to_non_nullable
               as bool,
       null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as Timestamp,
-      null == responsibleUser
-          ? _value.responsibleUser
-          : responsibleUser // ignore: cast_nullable_to_non_nullable
-              as String,
+      freezed == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as DocumentReference<Object?>?,
     ));
   }
 }
@@ -403,25 +458,29 @@ class __$$_TaskDtoCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TaskDto implements _TaskDto {
-  _$_TaskDto(this.name, this.isDone, @ServerTimestampConverter() this.date,
-      this.responsibleUser);
+  _$_TaskDto(
+      this.itemName,
+      this.complete,
+      @ServerTimestampConverter() this.date,
+      @DocumentReferenceConverter() this.owner);
 
   factory _$_TaskDto.fromJson(Map<String, dynamic> json) =>
       _$$_TaskDtoFromJson(json);
 
   @override
-  final String name;
+  final String itemName;
   @override
-  final bool isDone;
+  final bool complete;
   @override
   @ServerTimestampConverter()
   final Timestamp date;
   @override
-  final String responsibleUser;
+  @DocumentReferenceConverter()
+  final DocumentReference<Object?>? owner;
 
   @override
   String toString() {
-    return 'TaskDto(name: $name, isDone: $isDone, date: $date, responsibleUser: $responsibleUser)';
+    return 'TaskDto(itemName: $itemName, complete: $complete, date: $date, owner: $owner)';
   }
 
   @override
@@ -429,17 +488,17 @@ class _$_TaskDto implements _TaskDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TaskDto &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.isDone, isDone) || other.isDone == isDone) &&
+            (identical(other.itemName, itemName) ||
+                other.itemName == itemName) &&
+            (identical(other.complete, complete) ||
+                other.complete == complete) &&
             (identical(other.date, date) || other.date == date) &&
-            (identical(other.responsibleUser, responsibleUser) ||
-                other.responsibleUser == responsibleUser));
+            (identical(other.owner, owner) || other.owner == owner));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, name, isDone, date, responsibleUser);
+  int get hashCode => Object.hash(runtimeType, itemName, complete, date, owner);
 
   @JsonKey(ignore: true)
   @override
@@ -457,22 +516,25 @@ class _$_TaskDto implements _TaskDto {
 
 abstract class _TaskDto implements TaskDto {
   factory _TaskDto(
-      final String name,
-      final bool isDone,
-      @ServerTimestampConverter() final Timestamp date,
-      final String responsibleUser) = _$_TaskDto;
+      final String itemName,
+      final bool complete,
+      @ServerTimestampConverter()
+          final Timestamp date,
+      @DocumentReferenceConverter()
+          final DocumentReference<Object?>? owner) = _$_TaskDto;
 
   factory _TaskDto.fromJson(Map<String, dynamic> json) = _$_TaskDto.fromJson;
 
   @override
-  String get name;
+  String get itemName;
   @override
-  bool get isDone;
+  bool get complete;
   @override
   @ServerTimestampConverter()
   Timestamp get date;
   @override
-  String get responsibleUser;
+  @DocumentReferenceConverter()
+  DocumentReference<Object?>? get owner;
   @override
   @JsonKey(ignore: true)
   _$$_TaskDtoCopyWith<_$_TaskDto> get copyWith =>

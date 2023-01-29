@@ -15,7 +15,7 @@ class SplashPage extends StatelessWidget {
             unAuthenticated: (_) => goToSignInPage(context),
             authenticated: (_) => goToUsersOverviewPage(context));
       },
-      child: Scaffold(
+      child: const Scaffold(
         body: Center(child: CircularProgressIndicator()),
       ),
     );
