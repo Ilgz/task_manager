@@ -28,8 +28,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
         child: SizedBox(
           height: 46,
           child: AppBar(
-            systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppConstants.primaryColor,statusBarIconBrightness: Brightness.light,statusBarBrightness: Brightness.dark,),
-            backgroundColor: AppConstants.primaryColor,
+
+              backgroundColor: Theme.of(context).primaryColor,
             actions: widget.actions,
             // shape: const RoundedRectangleBorder(
             //   borderRadius: BorderRadius.all(Radius.circular(8)),

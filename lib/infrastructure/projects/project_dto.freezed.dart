@@ -33,6 +33,7 @@ mixin _$ProjectDto {
   @DocumentReferenceConverter()
   List<DocumentReference<Object?>> get members =>
       throw _privateConstructorUsedError;
+  List<MessageChatDto> get messages => throw _privateConstructorUsedError;
   List<TaskDto> get tasks => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -59,6 +60,7 @@ abstract class $ProjectDtoCopyWith<$Res> {
           DocumentReference<Object?>? reference,
       @DocumentReferenceConverter()
           List<DocumentReference<Object?>> members,
+      List<MessageChatDto> messages,
       List<TaskDto> tasks});
 }
 
@@ -81,6 +83,7 @@ class _$ProjectDtoCopyWithImpl<$Res, $Val extends ProjectDto>
     Object? owner = null,
     Object? reference = freezed,
     Object? members = null,
+    Object? messages = null,
     Object? tasks = null,
   }) {
     return _then(_value.copyWith(
@@ -108,6 +111,10 @@ class _$ProjectDtoCopyWithImpl<$Res, $Val extends ProjectDto>
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
               as List<DocumentReference<Object?>>,
+      messages: null == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<MessageChatDto>,
       tasks: null == tasks
           ? _value.tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -136,6 +143,7 @@ abstract class _$$_ProjectDtoCopyWith<$Res>
           DocumentReference<Object?>? reference,
       @DocumentReferenceConverter()
           List<DocumentReference<Object?>> members,
+      List<MessageChatDto> messages,
       List<TaskDto> tasks});
 }
 
@@ -156,6 +164,7 @@ class __$$_ProjectDtoCopyWithImpl<$Res>
     Object? owner = null,
     Object? reference = freezed,
     Object? members = null,
+    Object? messages = null,
     Object? tasks = null,
   }) {
     return _then(_$_ProjectDto(
@@ -183,6 +192,10 @@ class __$$_ProjectDtoCopyWithImpl<$Res>
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
               as List<DocumentReference<Object?>>,
+      messages: null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as List<MessageChatDto>,
       tasks: null == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -206,8 +219,10 @@ class _$_ProjectDto extends _ProjectDto {
           this.reference,
       @DocumentReferenceConverter()
           required final List<DocumentReference<Object?>> members,
+      required final List<MessageChatDto> messages,
       required final List<TaskDto> tasks})
       : _members = members,
+        _messages = messages,
         _tasks = tasks,
         super._();
 
@@ -237,6 +252,14 @@ class _$_ProjectDto extends _ProjectDto {
     return EqualUnmodifiableListView(_members);
   }
 
+  final List<MessageChatDto> _messages;
+  @override
+  List<MessageChatDto> get messages {
+    if (_messages is EqualUnmodifiableListView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_messages);
+  }
+
   final List<TaskDto> _tasks;
   @override
   List<TaskDto> get tasks {
@@ -247,7 +270,7 @@ class _$_ProjectDto extends _ProjectDto {
 
   @override
   String toString() {
-    return 'ProjectDto(name: $name, isPublic: $isPublic, date: $date, owner: $owner, reference: $reference, members: $members, tasks: $tasks)';
+    return 'ProjectDto(name: $name, isPublic: $isPublic, date: $date, owner: $owner, reference: $reference, members: $members, messages: $messages, tasks: $tasks)';
   }
 
   @override
@@ -263,6 +286,7 @@ class _$_ProjectDto extends _ProjectDto {
             (identical(other.reference, reference) ||
                 other.reference == reference) &&
             const DeepCollectionEquality().equals(other._members, _members) &&
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
             const DeepCollectionEquality().equals(other._tasks, _tasks));
   }
 
@@ -276,6 +300,7 @@ class _$_ProjectDto extends _ProjectDto {
       owner,
       reference,
       const DeepCollectionEquality().hash(_members),
+      const DeepCollectionEquality().hash(_messages),
       const DeepCollectionEquality().hash(_tasks));
 
   @JsonKey(ignore: true)
@@ -305,6 +330,7 @@ abstract class _ProjectDto extends ProjectDto {
           final DocumentReference<Object?>? reference,
       @DocumentReferenceConverter()
           required final List<DocumentReference<Object?>> members,
+      required final List<MessageChatDto> messages,
       required final List<TaskDto> tasks}) = _$_ProjectDto;
   _ProjectDto._() : super._();
 
@@ -328,6 +354,8 @@ abstract class _ProjectDto extends ProjectDto {
   @override
   @DocumentReferenceConverter()
   List<DocumentReference<Object?>> get members;
+  @override
+  List<MessageChatDto> get messages;
   @override
   List<TaskDto> get tasks;
   @override
@@ -457,12 +485,13 @@ class __$$_TaskDtoCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TaskDto implements _TaskDto {
+class _$_TaskDto extends _TaskDto {
   _$_TaskDto(
       this.itemName,
       this.complete,
       @ServerTimestampConverter() this.date,
-      @DocumentReferenceConverter() this.owner);
+      @DocumentReferenceConverter() this.owner)
+      : super._();
 
   factory _$_TaskDto.fromJson(Map<String, dynamic> json) =>
       _$$_TaskDtoFromJson(json);
@@ -514,7 +543,7 @@ class _$_TaskDto implements _TaskDto {
   }
 }
 
-abstract class _TaskDto implements TaskDto {
+abstract class _TaskDto extends TaskDto {
   factory _TaskDto(
       final String itemName,
       final bool complete,
@@ -522,6 +551,7 @@ abstract class _TaskDto implements TaskDto {
           final Timestamp date,
       @DocumentReferenceConverter()
           final DocumentReference<Object?>? owner) = _$_TaskDto;
+  _TaskDto._() : super._();
 
   factory _TaskDto.fromJson(Map<String, dynamic> json) = _$_TaskDto.fromJson;
 

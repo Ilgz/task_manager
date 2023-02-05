@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/application/auth/auth_bloc.dart';
-import 'package:task_manager/presentation/routes/router.dart';
+import 'package:task_manager/presentation/core/routes/router.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);

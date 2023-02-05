@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ProjectFailure {
+mixin _$FirebaseFirestoreFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
@@ -64,16 +64,17 @@ mixin _$ProjectFailure {
 }
 
 /// @nodoc
-abstract class $ProjectFailureCopyWith<$Res> {
-  factory $ProjectFailureCopyWith(
-          ProjectFailure value, $Res Function(ProjectFailure) then) =
-      _$ProjectFailureCopyWithImpl<$Res, ProjectFailure>;
+abstract class $FirebaseFirestoreFailureCopyWith<$Res> {
+  factory $FirebaseFirestoreFailureCopyWith(FirebaseFirestoreFailure value,
+          $Res Function(FirebaseFirestoreFailure) then) =
+      _$FirebaseFirestoreFailureCopyWithImpl<$Res, FirebaseFirestoreFailure>;
 }
 
 /// @nodoc
-class _$ProjectFailureCopyWithImpl<$Res, $Val extends ProjectFailure>
-    implements $ProjectFailureCopyWith<$Res> {
-  _$ProjectFailureCopyWithImpl(this._value, this._then);
+class _$FirebaseFirestoreFailureCopyWithImpl<$Res,
+        $Val extends FirebaseFirestoreFailure>
+    implements $FirebaseFirestoreFailureCopyWith<$Res> {
+  _$FirebaseFirestoreFailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -90,7 +91,7 @@ abstract class _$$_UnexpectedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnexpectedCopyWithImpl<$Res>
-    extends _$ProjectFailureCopyWithImpl<$Res, _$_Unexpected>
+    extends _$FirebaseFirestoreFailureCopyWithImpl<$Res, _$_Unexpected>
     implements _$$_UnexpectedCopyWith<$Res> {
   __$$_UnexpectedCopyWithImpl(
       _$_Unexpected _value, $Res Function(_$_Unexpected) _then)
@@ -104,13 +105,14 @@ class _$_Unexpected with DiagnosticableTreeMixin implements _Unexpected {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProjectFailure.unexpected()';
+    return 'FirebaseFirestoreFailure.unexpected()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ProjectFailure.unexpected'));
+    properties.add(
+        DiagnosticsProperty('type', 'FirebaseFirestoreFailure.unexpected'));
   }
 
   @override
@@ -192,7 +194,7 @@ class _$_Unexpected with DiagnosticableTreeMixin implements _Unexpected {
   }
 }
 
-abstract class _Unexpected implements ProjectFailure {
+abstract class _Unexpected implements FirebaseFirestoreFailure {
   const factory _Unexpected() = _$_Unexpected;
 }
 
@@ -205,7 +207,8 @@ abstract class _$$_InsufficientPermissionCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InsufficientPermissionCopyWithImpl<$Res>
-    extends _$ProjectFailureCopyWithImpl<$Res, _$_InsufficientPermission>
+    extends _$FirebaseFirestoreFailureCopyWithImpl<$Res,
+        _$_InsufficientPermission>
     implements _$$_InsufficientPermissionCopyWith<$Res> {
   __$$_InsufficientPermissionCopyWithImpl(_$_InsufficientPermission _value,
       $Res Function(_$_InsufficientPermission) _then)
@@ -221,14 +224,14 @@ class _$_InsufficientPermission
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProjectFailure.insufficientPermission()';
+    return 'FirebaseFirestoreFailure.insufficientPermission()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'ProjectFailure.insufficientPermission'));
+    properties.add(DiagnosticsProperty(
+        'type', 'FirebaseFirestoreFailure.insufficientPermission'));
   }
 
   @override
@@ -311,7 +314,7 @@ class _$_InsufficientPermission
   }
 }
 
-abstract class _InsufficientPermission implements ProjectFailure {
+abstract class _InsufficientPermission implements FirebaseFirestoreFailure {
   const factory _InsufficientPermission() = _$_InsufficientPermission;
 }
 
@@ -324,7 +327,7 @@ abstract class _$$_UnableToUpdateCopyWith<$Res> {
 
 /// @nodoc
 class __$$_UnableToUpdateCopyWithImpl<$Res>
-    extends _$ProjectFailureCopyWithImpl<$Res, _$_UnableToUpdate>
+    extends _$FirebaseFirestoreFailureCopyWithImpl<$Res, _$_UnableToUpdate>
     implements _$$_UnableToUpdateCopyWith<$Res> {
   __$$_UnableToUpdateCopyWithImpl(
       _$_UnableToUpdate _value, $Res Function(_$_UnableToUpdate) _then)
@@ -340,14 +343,14 @@ class _$_UnableToUpdate
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProjectFailure.unableToUpdate()';
+    return 'FirebaseFirestoreFailure.unableToUpdate()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'ProjectFailure.unableToUpdate'));
+    properties.add(
+        DiagnosticsProperty('type', 'FirebaseFirestoreFailure.unableToUpdate'));
   }
 
   @override
@@ -429,6 +432,6 @@ class _$_UnableToUpdate
   }
 }
 
-abstract class _UnableToUpdate implements ProjectFailure {
+abstract class _UnableToUpdate implements FirebaseFirestoreFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
 }

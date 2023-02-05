@@ -20,41 +20,43 @@ mixin _$ProjectWatcherEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() startWatchAll,
     required TResult Function(
-            Either<ProjectFailure, List<Project>> failureOrProjects)
-        receiveNotes,
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)
+        receiveProjects,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? startWatchAll,
-    TResult? Function(Either<ProjectFailure, List<Project>> failureOrProjects)?
-        receiveNotes,
+    TResult? Function(
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)?
+        receiveProjects,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startWatchAll,
-    TResult Function(Either<ProjectFailure, List<Project>> failureOrProjects)?
-        receiveNotes,
+    TResult Function(
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)?
+        receiveProjects,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartWatchAll value) startWatchAll,
-    required TResult Function(_ReceiveNotes value) receiveNotes,
+    required TResult Function(_ReceiveNotes value) receiveProjects,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartWatchAll value)? startWatchAll,
-    TResult? Function(_ReceiveNotes value)? receiveNotes,
+    TResult? Function(_ReceiveNotes value)? receiveProjects,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartWatchAll value)? startWatchAll,
-    TResult Function(_ReceiveNotes value)? receiveNotes,
+    TResult Function(_ReceiveNotes value)? receiveProjects,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,8 +120,8 @@ class _$_StartWatchAll implements _StartWatchAll {
   TResult when<TResult extends Object?>({
     required TResult Function() startWatchAll,
     required TResult Function(
-            Either<ProjectFailure, List<Project>> failureOrProjects)
-        receiveNotes,
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)
+        receiveProjects,
   }) {
     return startWatchAll();
   }
@@ -128,8 +130,9 @@ class _$_StartWatchAll implements _StartWatchAll {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? startWatchAll,
-    TResult? Function(Either<ProjectFailure, List<Project>> failureOrProjects)?
-        receiveNotes,
+    TResult? Function(
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)?
+        receiveProjects,
   }) {
     return startWatchAll?.call();
   }
@@ -138,8 +141,9 @@ class _$_StartWatchAll implements _StartWatchAll {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startWatchAll,
-    TResult Function(Either<ProjectFailure, List<Project>> failureOrProjects)?
-        receiveNotes,
+    TResult Function(
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)?
+        receiveProjects,
     required TResult orElse(),
   }) {
     if (startWatchAll != null) {
@@ -152,7 +156,7 @@ class _$_StartWatchAll implements _StartWatchAll {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartWatchAll value) startWatchAll,
-    required TResult Function(_ReceiveNotes value) receiveNotes,
+    required TResult Function(_ReceiveNotes value) receiveProjects,
   }) {
     return startWatchAll(this);
   }
@@ -161,7 +165,7 @@ class _$_StartWatchAll implements _StartWatchAll {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartWatchAll value)? startWatchAll,
-    TResult? Function(_ReceiveNotes value)? receiveNotes,
+    TResult? Function(_ReceiveNotes value)? receiveProjects,
   }) {
     return startWatchAll?.call(this);
   }
@@ -170,7 +174,7 @@ class _$_StartWatchAll implements _StartWatchAll {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartWatchAll value)? startWatchAll,
-    TResult Function(_ReceiveNotes value)? receiveNotes,
+    TResult Function(_ReceiveNotes value)? receiveProjects,
     required TResult orElse(),
   }) {
     if (startWatchAll != null) {
@@ -190,7 +194,8 @@ abstract class _$$_ReceiveNotesCopyWith<$Res> {
           _$_ReceiveNotes value, $Res Function(_$_ReceiveNotes) then) =
       __$$_ReceiveNotesCopyWithImpl<$Res>;
   @useResult
-  $Res call({Either<ProjectFailure, List<Project>> failureOrProjects});
+  $Res call(
+      {Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects});
 }
 
 /// @nodoc
@@ -210,7 +215,7 @@ class __$$_ReceiveNotesCopyWithImpl<$Res>
       null == failureOrProjects
           ? _value.failureOrProjects
           : failureOrProjects // ignore: cast_nullable_to_non_nullable
-              as Either<ProjectFailure, List<Project>>,
+              as Either<FirebaseFirestoreFailure, List<Project>>,
     ));
   }
 }
@@ -221,11 +226,11 @@ class _$_ReceiveNotes implements _ReceiveNotes {
   const _$_ReceiveNotes(this.failureOrProjects);
 
   @override
-  final Either<ProjectFailure, List<Project>> failureOrProjects;
+  final Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects;
 
   @override
   String toString() {
-    return 'ProjectWatcherEvent.receiveNotes(failureOrProjects: $failureOrProjects)';
+    return 'ProjectWatcherEvent.receiveProjects(failureOrProjects: $failureOrProjects)';
   }
 
   @override
@@ -251,32 +256,34 @@ class _$_ReceiveNotes implements _ReceiveNotes {
   TResult when<TResult extends Object?>({
     required TResult Function() startWatchAll,
     required TResult Function(
-            Either<ProjectFailure, List<Project>> failureOrProjects)
-        receiveNotes,
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)
+        receiveProjects,
   }) {
-    return receiveNotes(failureOrProjects);
+    return receiveProjects(failureOrProjects);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? startWatchAll,
-    TResult? Function(Either<ProjectFailure, List<Project>> failureOrProjects)?
-        receiveNotes,
+    TResult? Function(
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)?
+        receiveProjects,
   }) {
-    return receiveNotes?.call(failureOrProjects);
+    return receiveProjects?.call(failureOrProjects);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? startWatchAll,
-    TResult Function(Either<ProjectFailure, List<Project>> failureOrProjects)?
-        receiveNotes,
+    TResult Function(
+            Either<FirebaseFirestoreFailure, List<Project>> failureOrProjects)?
+        receiveProjects,
     required TResult orElse(),
   }) {
-    if (receiveNotes != null) {
-      return receiveNotes(failureOrProjects);
+    if (receiveProjects != null) {
+      return receiveProjects(failureOrProjects);
     }
     return orElse();
   }
@@ -285,29 +292,29 @@ class _$_ReceiveNotes implements _ReceiveNotes {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StartWatchAll value) startWatchAll,
-    required TResult Function(_ReceiveNotes value) receiveNotes,
+    required TResult Function(_ReceiveNotes value) receiveProjects,
   }) {
-    return receiveNotes(this);
+    return receiveProjects(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_StartWatchAll value)? startWatchAll,
-    TResult? Function(_ReceiveNotes value)? receiveNotes,
+    TResult? Function(_ReceiveNotes value)? receiveProjects,
   }) {
-    return receiveNotes?.call(this);
+    return receiveProjects?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_StartWatchAll value)? startWatchAll,
-    TResult Function(_ReceiveNotes value)? receiveNotes,
+    TResult Function(_ReceiveNotes value)? receiveProjects,
     required TResult orElse(),
   }) {
-    if (receiveNotes != null) {
-      return receiveNotes(this);
+    if (receiveProjects != null) {
+      return receiveProjects(this);
     }
     return orElse();
   }
@@ -315,10 +322,10 @@ class _$_ReceiveNotes implements _ReceiveNotes {
 
 abstract class _ReceiveNotes implements ProjectWatcherEvent {
   const factory _ReceiveNotes(
-          final Either<ProjectFailure, List<Project>> failureOrProjects) =
-      _$_ReceiveNotes;
+      final Either<FirebaseFirestoreFailure, List<Project>>
+          failureOrProjects) = _$_ReceiveNotes;
 
-  Either<ProjectFailure, List<Project>> get failureOrProjects;
+  Either<FirebaseFirestoreFailure, List<Project>> get failureOrProjects;
   @JsonKey(ignore: true)
   _$$_ReceiveNotesCopyWith<_$_ReceiveNotes> get copyWith =>
       throw _privateConstructorUsedError;
@@ -331,7 +338,8 @@ mixin _$ProjectWatcherState {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Project> projects) loadSuccess,
-    required TResult Function(ProjectFailure projectFailure) loadFailure,
+    required TResult Function(FirebaseFirestoreFailure projectFailure)
+        loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -339,7 +347,7 @@ mixin _$ProjectWatcherState {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Project> projects)? loadSuccess,
-    TResult? Function(ProjectFailure projectFailure)? loadFailure,
+    TResult? Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -347,7 +355,7 @@ mixin _$ProjectWatcherState {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Project> projects)? loadSuccess,
-    TResult Function(ProjectFailure projectFailure)? loadFailure,
+    TResult Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -436,7 +444,8 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Project> projects) loadSuccess,
-    required TResult Function(ProjectFailure projectFailure) loadFailure,
+    required TResult Function(FirebaseFirestoreFailure projectFailure)
+        loadFailure,
   }) {
     return initial();
   }
@@ -447,7 +456,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Project> projects)? loadSuccess,
-    TResult? Function(ProjectFailure projectFailure)? loadFailure,
+    TResult? Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
   }) {
     return initial?.call();
   }
@@ -458,7 +467,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Project> projects)? loadSuccess,
-    TResult Function(ProjectFailure projectFailure)? loadFailure,
+    TResult Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -550,7 +559,8 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Project> projects) loadSuccess,
-    required TResult Function(ProjectFailure projectFailure) loadFailure,
+    required TResult Function(FirebaseFirestoreFailure projectFailure)
+        loadFailure,
   }) {
     return loadInProgress();
   }
@@ -561,7 +571,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Project> projects)? loadSuccess,
-    TResult? Function(ProjectFailure projectFailure)? loadFailure,
+    TResult? Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
   }) {
     return loadInProgress?.call();
   }
@@ -572,7 +582,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Project> projects)? loadSuccess,
-    TResult Function(ProjectFailure projectFailure)? loadFailure,
+    TResult Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -696,7 +706,8 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Project> projects) loadSuccess,
-    required TResult Function(ProjectFailure projectFailure) loadFailure,
+    required TResult Function(FirebaseFirestoreFailure projectFailure)
+        loadFailure,
   }) {
     return loadSuccess(projects);
   }
@@ -707,7 +718,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Project> projects)? loadSuccess,
-    TResult? Function(ProjectFailure projectFailure)? loadFailure,
+    TResult? Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
   }) {
     return loadSuccess?.call(projects);
   }
@@ -718,7 +729,7 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Project> projects)? loadSuccess,
-    TResult Function(ProjectFailure projectFailure)? loadFailure,
+    TResult Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -780,9 +791,9 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
           _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
       __$$_LoadFailureCopyWithImpl<$Res>;
   @useResult
-  $Res call({ProjectFailure projectFailure});
+  $Res call({FirebaseFirestoreFailure projectFailure});
 
-  $ProjectFailureCopyWith<$Res> get projectFailure;
+  $FirebaseFirestoreFailureCopyWith<$Res> get projectFailure;
 }
 
 /// @nodoc
@@ -802,14 +813,15 @@ class __$$_LoadFailureCopyWithImpl<$Res>
       null == projectFailure
           ? _value.projectFailure
           : projectFailure // ignore: cast_nullable_to_non_nullable
-              as ProjectFailure,
+              as FirebaseFirestoreFailure,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ProjectFailureCopyWith<$Res> get projectFailure {
-    return $ProjectFailureCopyWith<$Res>(_value.projectFailure, (value) {
+  $FirebaseFirestoreFailureCopyWith<$Res> get projectFailure {
+    return $FirebaseFirestoreFailureCopyWith<$Res>(_value.projectFailure,
+        (value) {
       return _then(_value.copyWith(projectFailure: value));
     });
   }
@@ -821,7 +833,7 @@ class _$_LoadFailure implements _LoadFailure {
   _$_LoadFailure(this.projectFailure);
 
   @override
-  final ProjectFailure projectFailure;
+  final FirebaseFirestoreFailure projectFailure;
 
   @override
   String toString() {
@@ -852,7 +864,8 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function(List<Project> projects) loadSuccess,
-    required TResult Function(ProjectFailure projectFailure) loadFailure,
+    required TResult Function(FirebaseFirestoreFailure projectFailure)
+        loadFailure,
   }) {
     return loadFailure(projectFailure);
   }
@@ -863,7 +876,7 @@ class _$_LoadFailure implements _LoadFailure {
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
     TResult? Function(List<Project> projects)? loadSuccess,
-    TResult? Function(ProjectFailure projectFailure)? loadFailure,
+    TResult? Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
   }) {
     return loadFailure?.call(projectFailure);
   }
@@ -874,7 +887,7 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function(List<Project> projects)? loadSuccess,
-    TResult Function(ProjectFailure projectFailure)? loadFailure,
+    TResult Function(FirebaseFirestoreFailure projectFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -922,9 +935,10 @@ class _$_LoadFailure implements _LoadFailure {
 }
 
 abstract class _LoadFailure implements ProjectWatcherState {
-  factory _LoadFailure(final ProjectFailure projectFailure) = _$_LoadFailure;
+  factory _LoadFailure(final FirebaseFirestoreFailure projectFailure) =
+      _$_LoadFailure;
 
-  ProjectFailure get projectFailure;
+  FirebaseFirestoreFailure get projectFailure;
   @JsonKey(ignore: true)
   _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;

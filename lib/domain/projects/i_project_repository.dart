@@ -4,12 +4,22 @@ import 'package:task_manager/domain/core/failures.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/domain/projects/project_failure.dart';
 import 'package:task_manager/domain/projects/task.dart';
+import 'package:task_manager/domain/users/user.dart';
 abstract class IProjectRepository{
-  Stream<Either<ProjectFailure,List<Project>>> watchAllProjects();
-  Future<Either<ProjectFailure, Unit>>updateProject(Project project);
-  Future<Either<ProjectFailure, Unit>>createProject(Project project);
-  Future<Either<ProjectFailure, Unit>>deleteProject(Project project);
-  Future<Either<ProjectFailure, Unit>>updateTask(Task task,DocumentReference documentReference,Task initialTask);
-  Future<Either<ProjectFailure, Unit>>createTask(Task task,DocumentReference documentReference);
-  Future<Either<ProjectFailure, Unit>>deleteTask(Task task,DocumentReference documentReference);
+  Stream<Either<FirebaseFirestoreFailure,List<Project>>> watchAllProjects();
+  Future<Either<FirebaseFirestoreFailure,List<Project>>> getUserProjects(User user);
+  Future<Either<FirebaseFirestoreFailure, Unit>>addProjectMember(Project project,User user);
+  Future<Either<FirebaseFirestoreFailure, Unit>>deleteProjectMember(Project project,User user);
+  Future<Either<FirebaseFirestoreFailure, Unit>>updateProject(Project project);
+  Future<Either<FirebaseFirestoreFailure, Unit>>quitProject(Project project);
+  Future<Either<FirebaseFirestoreFailure, Unit>>createProject(Project project);
+  Future<Either<FirebaseFirestoreFailure, Unit>>deleteProject(Project project);
+  Future<Either<FirebaseFirestoreFailure, Unit>>updateTask(Task task,DocumentReference documentReference,Task initialTask);
+  Future<Either<FirebaseFirestoreFailure, Unit>>createTask(Task task,DocumentReference documentReference);
+  Future<Either<FirebaseFirestoreFailure, Unit>>deleteTask(Task task,DocumentReference documentReference);
+  Future<Either<FirebaseFirestoreFailure, Unit>> changeDoneStatus(Task task, DocumentReference reference);
+  Future<Either<FirebaseFirestoreFailure, Unit>> changeTaskAssignee(Task task, DocumentReference reference,User user);
+  Future<Either<FirebaseFirestoreFailure, Unit>> deleteTaskAssignee(Task task, DocumentReference reference);
+  Future<Either<FirebaseFirestoreFailure, Unit>> changePublicityStatus(Project project);
+
 }

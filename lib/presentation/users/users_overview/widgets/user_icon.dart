@@ -1,41 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/presentation/core/utils/name_color_generator.dart';
 
 class UserIcon extends StatelessWidget {
-  const UserIcon(this.name,{Key? key,}) : super(key: key);
+  const UserIcon(this.name,{Key? key,this.size=30}) : super(key: key);
   final String name;
+  final double size;
   @override
   Widget build(BuildContext context) {
-    final List<Color> listColor=[Colors.pinkAccent,Colors.deepOrangeAccent,Colors.purple,Colors.blue,Colors.orangeAccent,Colors.green,Colors.yellow];
-    Color selectedColor;
-    if(name[0].toLowerCase().contains(RegExp(r'[a-c]'))){
-      selectedColor=listColor.first;
-    }else if(name[0].toLowerCase().contains(RegExp(r'[d-g]'))){
-      selectedColor=listColor[1];
-    }else if(name[0].toLowerCase().contains(RegExp(r'[h-k]'))){
-      selectedColor=listColor[2];
-    }
-    else if(name[0].toLowerCase().contains(RegExp(r'[l-p]'))){
-      selectedColor=listColor[3];
-    }
-    else if(name[0].toLowerCase().contains(RegExp(r'[q-u]'))){
-      selectedColor=listColor[4];
-    }
-    else if(name[0].toLowerCase().contains(RegExp(r'[v-z]'))){
-      selectedColor=listColor[6];
-    }
-    else{
-      selectedColor=listColor.last;
-    }
-    return Container(
-      width: 30,
+    return SizedBox(
+      width: size,
+      height: size,
       child: CircleAvatar(
-        backgroundColor: selectedColor,
+        backgroundColor: NameColorGenerator.generateColorFromName(name),
         radius: 18,
-        child: Text(
-          name[0].toUpperCase(),
-          style: TextStyle(color: Colors.white),
+        child: FittedBox(
+          fit:BoxFit.cover,
+          child: Padding(
+            padding: const EdgeInsets.all(100.0),
+            child: Text(
+              name[0].toUpperCase(),
+
+              style: TextStyle(color: Colors.white,fontSize: 400),
+            ),
+          ),
         ),
       ),
     );
   }
+
 }

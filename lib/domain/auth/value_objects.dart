@@ -19,3 +19,19 @@ class Password extends ValueObject<String> {
   }
   const Password._(this.value);
 }
+class ConfirmationPassword extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>,String> value;
+  factory ConfirmationPassword(String input,Password password){
+    return ConfirmationPassword._(validateConfirmationPassword(input,password));
+  }
+  const ConfirmationPassword._(this.value);
+}
+class UserName extends ValueObject<String>{
+  @override
+  final Either<ValueFailure<String>,String> value;
+  factory UserName(String input){
+    return UserName._(validateStringNotEmpty(input).andThen(validateMaxStringLegth(input, 15)).andThen(validateMinStringLength(input, 3)));
+  }
+  const UserName._(this.value);
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:task_manager/presentation/core/constants.dart';
 import 'package:task_manager/presentation/core/widgets/custom_app_bar.dart';
 
 class CustomScaffold extends StatelessWidget {
@@ -16,9 +17,9 @@ class CustomScaffold extends StatelessWidget {
     required this.body,
     this.floatingActionButton,
     this.padding,
-    this.useAppBar=true,
+    this.useAppBar = true,
     this.bottomNavigationBar,
-    this.actions=const [],
+    this.actions = const [],
     this.isScrolling = false,
     this.appBarTitle = 'Custom Widgets',
   }) : super(key: key);
@@ -26,22 +27,20 @@ class CustomScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(242, 244, 255, 1),
-      appBar: useAppBar?CustomAppBar(textTitle: appBarTitle,
-        actions: actions,
-      ):null,
+      appBar: useAppBar
+          ? CustomAppBar(
+              textTitle: appBarTitle,
+              actions: actions,
+            )
+          : null,
       body: Padding(
-        padding: padding ??
-            EdgeInsets.symmetric(
-              horizontal: 5
-            ),
+        padding: padding ?? const EdgeInsets.symmetric(horizontal: 5),
         child: isScrolling
             ? SingleChildScrollView(
-          child: body,
-        )
+                child: body,
+              )
             : body,
       ),
-
       bottomNavigationBar: bottomNavigationBar,
       floatingActionButton: floatingActionButton,
     );

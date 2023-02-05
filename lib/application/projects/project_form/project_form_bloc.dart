@@ -40,7 +40,7 @@ class ProjectFormBloc extends Bloc<ProjectFormEvent, ProjectFormState> {
                 projectFailureSuccessOption: none()));
           },
           saveProject: (e) async {
-            Either<ProjectFailure, Unit>? failureOrSuccess;
+            Either<FirebaseFirestoreFailure, Unit>? failureOrSuccess;
             if (state.project.failureOption.isNone()) {
               emit(state.copyWith(isProcessing: true,projectFailureSuccessOption: none()));
               failureOrSuccess = state.project.isNew

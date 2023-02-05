@@ -14,12 +14,13 @@ abstract class Task implements _$Task {
       required bool isDone,
       required Timestamp date,
         @Default(false) bool isNew,
-        required Option<DocumentReference> responsibleUser,
+        required Option<DocumentReference> assignee,
+        required bool canChangeDoneStatus,
       required Option<bool> canBeModifiedAndIsAdmin}) = _Task;
   Option<ValueFailure<dynamic>> get failureOption {
     return taskName.value.fold((failure) => some(failure), (r) => none());
   }
   factory Task.empty(){
-    return Task(taskName: TaskName(""), isDone: false, date: Timestamp.now(), responsibleUser: none(), canBeModifiedAndIsAdmin: some(true),isNew: true);
+    return Task(taskName: TaskName(""), isDone: false, date: Timestamp.now(),canChangeDoneStatus: true, assignee: none(), canBeModifiedAndIsAdmin: some(true),isNew: true);
   }
 }

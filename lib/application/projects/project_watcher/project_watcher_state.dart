@@ -5,6 +5,6 @@ abstract class ProjectWatcherState with _$ProjectWatcherState{
   factory ProjectWatcherState.initial()=_Initial;
   factory ProjectWatcherState.loadInProgress()=_LoadInProgress;
   factory ProjectWatcherState.loadSuccess(List<Project> projects)=_LoadSuccess;
-  factory ProjectWatcherState.loadFailure(ProjectFailure projectFailure)=_LoadFailure;
+  factory ProjectWatcherState.loadFailure(FirebaseFirestoreFailure projectFailure)=_LoadFailure;
 
 }

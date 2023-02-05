@@ -10,3 +10,10 @@ class UnexpectedValueError extends Error{
     return "Encountered a valueFailure at an unrecoverable point. Terminating. Failure was: $valueFailure";
   }
 }
+
+class UnexpectedProjectError extends Error{
+  @override
+  String toString() {
+    return "Encountered a projectFailure could not find candidates.";
+  }
+}

@@ -3,8 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'project_failure.freezed.dart';
 @freezed
-abstract class ProjectFailure with _$ProjectFailure{
-  const factory ProjectFailure.unexpected()=_Unexpected;
-  const factory ProjectFailure.insufficientPermission()=_InsufficientPermission;
-  const factory ProjectFailure.unableToUpdate()=_UnableToUpdate;
+abstract class FirebaseFirestoreFailure with _$FirebaseFirestoreFailure{
+  const factory FirebaseFirestoreFailure.unexpected()=_Unexpected;
+  const factory FirebaseFirestoreFailure.insufficientPermission()=_InsufficientPermission;
+  const factory FirebaseFirestoreFailure.unableToUpdate()=_UnableToUpdate;
 }

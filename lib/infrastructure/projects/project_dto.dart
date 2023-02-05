@@ -4,9 +4,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/domain/projects/task.dart';
 import 'package:task_manager/domain/projects/value_objects.dart';
+import 'package:task_manager/domain/users/user.dart';
+import 'package:task_manager/infrastructure/chat/message_chat_dto.dart';
+import 'package:task_manager/infrastructure/core/firestore_helpers.dart';
 
 part 'project_dto.freezed.dart';
-
 part 'project_dto.g.dart';
 
 @freezed
@@ -25,8 +27,8 @@ abstract class ProjectDto implements _$ProjectDto {
           DocumentReference? reference,
       @DocumentReferenceConverter()
           required List<DocumentReference> members,
+        required List<MessageChatDto> messages,
       required List<TaskDto> tasks}) = _ProjectDto;
-
   factory ProjectDto.fromJson(Map<String, dynamic> json) =>
       _$ProjectDtoFromJson(json);
 
@@ -34,9 +36,11 @@ abstract class ProjectDto implements _$ProjectDto {
       name: project.projectName.getOrCrash(),
       isPublic: project.isPublic,
       date: project.date,
-      owner: project.owner,
-      members: project.members,
-      tasks: project.tasks.map((task) => TaskDto.fromDomain(task)).toList());
+      owner: project.owner.reference,
+      members: project.members.map((member) => member.reference).toList(),
+      tasks: project.tasks.map((task) => TaskDto.fromDomain(task)).toList(),
+      messages: project.messages.map((message) => MessageChatDto.fromDomain(message)).toList()
+  );
 
   factory ProjectDto.fromFirestore(QueryDocumentSnapshot doc) {
     return ProjectDto.fromJson(doc.data()! as Map<String, dynamic>).copyWith(
@@ -44,7 +48,7 @@ abstract class ProjectDto implements _$ProjectDto {
     );
   }
 
-  Project toDomain() {
+  Project toDomain(User owner,List<User> members) {
     return Project(
         projectName: ProjectName(name),
         isPublic: isPublic,
@@ -53,57 +57,41 @@ abstract class ProjectDto implements _$ProjectDto {
         date: date,
         members: members,
         canBeModifiedAndIsAdmin: none(),
+        messages: messages.map((messageDto) => messageDto.toDomain()).toList(),
         tasks: tasks
             .map((task) => Task(
                 taskName: TaskName(task.itemName),
                 isDone: task.complete,
                 date: task.date,
-                responsibleUser: optionOf(task.owner),
+            assignee: optionOf(task.owner),
+                canChangeDoneStatus: false,
                 canBeModifiedAndIsAdmin: none()))
             .toList());
   }
 }
 
-class DocumentReferenceConverter
-    implements JsonConverter<DocumentReference, DocumentReference> {
-  const DocumentReferenceConverter();
 
-  @override
-  DocumentReference fromJson(DocumentReference documentReference) {
-    return documentReference;
-  }
-
-  @override
-  DocumentReference toJson(DocumentReference documentReference) =>
-      documentReference;
-}
-
-class ServerTimestampConverter implements JsonConverter<Timestamp, Timestamp> {
-  const ServerTimestampConverter();
-
-  @override
-  Timestamp fromJson(Timestamp timestamp) {
-    return timestamp;
-  }
-
-  @override
-  Timestamp toJson(Timestamp date) => date;
-}
 
 @freezed
-abstract class TaskDto with _$TaskDto {
-  factory TaskDto(
-      String itemName,
+abstract class TaskDto implements _$TaskDto {
+ TaskDto._();
+  factory TaskDto(String itemName,
       bool complete,
       @ServerTimestampConverter() Timestamp date,
       @DocumentReferenceConverter() DocumentReference? owner) = _TaskDto;
 
-  factory TaskDto.fromDomain(Task task) => TaskDto(task.taskName.getOrCrash(),
-      task.isDone, task.date, task.responsibleUser.toNullable());
+  factory TaskDto.fromDomain(Task task) =>
+      TaskDto(task.taskName.getOrCrash(),
+          task.isDone, task.date, task.assignee.toNullable());
 
   factory TaskDto.fromJson(Map<String, dynamic> json) =>
       _$TaskDtoFromJson(json);
-// factory NoteDto.fromFirestore(QueryDocumentSnapshot doc) {
-//   return NoteDto.fromJson(doc.data()! as Map<String, dynamic>)
-//       .copyWith(id: doc.id);
+
+  factory TaskDto.fromFirestore(QueryDocumentSnapshot doc) {
+    return TaskDto.fromJson(doc.data()! as Map<String, dynamic>);
+    //.copyWith(id: doc.id);
+  }
+  Task toDomain() {
+    return Task(taskName: TaskName(itemName),isDone: complete,isNew: false,assignee: none(),canChangeDoneStatus: false,canBeModifiedAndIsAdmin: none(), date: date);
+  }
 }

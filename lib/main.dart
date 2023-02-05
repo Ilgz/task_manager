@@ -1,26 +1,21 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:task_manager/firebase_options.dart';
+import 'package:task_manager/firebase.dart';
 import 'package:task_manager/injection.dart';
-import 'package:task_manager/presentation/core/app_widget.dart';
-import 'package:task_manager/presentation/core/enums.dart';
-
-// import 'package:training_center/domain/auth/auth_failure.dart';
-// import 'package:training_center/domain/auth/value_objects.dart';
-// import 'package:training_center/firebase_options.dart';
-// import 'package:training_center/injection.dart';
-// import 'package:training_center/presentation/core/app_widget.dart';
+import 'package:task_manager/presentation/core/widgets/app_widget.dart';
 
 void main() async {
-  configureInjection(Environment.prod);
   WidgetsFlutterBinding.ensureInitialized();
+  await configureInjection(Environment.prod);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const AppWidget());
+
 }
 
+class Lesson {
+  final String name;
+  final DateTime dateTime;
 
+  Lesson(this.name, this.dateTime);
+}

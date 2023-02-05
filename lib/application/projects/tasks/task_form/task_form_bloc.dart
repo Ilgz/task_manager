@@ -29,7 +29,7 @@ class TaskFormBloc extends Bloc<TaskFormEvent, TaskFormState> {
      }, changeEditingState: (e){
        emit(state.copyWith(isEditing: e.editingState));
      }, saveTask: (e)async{
-       Either<ProjectFailure, Unit>? failureOrSuccess;
+       Either<FirebaseFirestoreFailure, Unit>? failureOrSuccess;
        if (state.task.failureOption.isNone()) {
          emit(state.copyWith(isProcessing: true,projectFailureSuccessOption: none()));
          failureOrSuccess = state.task.isNew

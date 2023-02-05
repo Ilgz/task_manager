@@ -18,6 +18,9 @@ _$_ProjectDto _$$_ProjectDtoFromJson(Map<String, dynamic> json) =>
           .map((e) => const DocumentReferenceConverter()
               .fromJson(e as DocumentReference<Object?>))
           .toList(),
+      messages: (json['messages'] as List<dynamic>)
+          .map((e) => MessageChatDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
       tasks: (json['tasks'] as List<dynamic>)
           .map((e) => TaskDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -32,6 +35,7 @@ Map<String, dynamic> _$$_ProjectDtoToJson(_$_ProjectDto instance) =>
       'members': instance.members
           .map(const DocumentReferenceConverter().toJson)
           .toList(),
+      'messages': instance.messages,
       'tasks': instance.tasks,
     };
 

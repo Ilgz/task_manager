@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancelledByUser,
+    required TResult Function(String errorName) remoteError,
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPassword,
@@ -26,7 +26,7 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancelledByUser,
+    TResult? Function(String errorName)? remoteError,
     TResult? Function()? serverError,
     TResult? Function()? emailAlreadyInUse,
     TResult? Function()? invalidEmailAndPassword,
@@ -34,7 +34,7 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancelledByUser,
+    TResult Function(String errorName)? remoteError,
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPassword,
@@ -43,7 +43,7 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(LocalError value) remoteError,
     required TResult Function(ServerError value) serverError,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPassword value)
@@ -52,7 +52,7 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(LocalError value)? remoteError,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult? Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
@@ -60,7 +60,7 @@ mixin _$AuthFailure {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(LocalError value)? remoteError,
     TResult Function(ServerError value)? serverError,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
@@ -88,81 +88,108 @@ class _$AuthFailureCopyWithImpl<$Res, $Val extends AuthFailure>
 }
 
 /// @nodoc
-abstract class _$$CancelledByUserCopyWith<$Res> {
-  factory _$$CancelledByUserCopyWith(
-          _$CancelledByUser value, $Res Function(_$CancelledByUser) then) =
-      __$$CancelledByUserCopyWithImpl<$Res>;
+abstract class _$$LocalErrorCopyWith<$Res> {
+  factory _$$LocalErrorCopyWith(
+          _$LocalError value, $Res Function(_$LocalError) then) =
+      __$$LocalErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorName});
 }
 
 /// @nodoc
-class __$$CancelledByUserCopyWithImpl<$Res>
-    extends _$AuthFailureCopyWithImpl<$Res, _$CancelledByUser>
-    implements _$$CancelledByUserCopyWith<$Res> {
-  __$$CancelledByUserCopyWithImpl(
-      _$CancelledByUser _value, $Res Function(_$CancelledByUser) _then)
+class __$$LocalErrorCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$LocalError>
+    implements _$$LocalErrorCopyWith<$Res> {
+  __$$LocalErrorCopyWithImpl(
+      _$LocalError _value, $Res Function(_$LocalError) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorName = null,
+  }) {
+    return _then(_$LocalError(
+      null == errorName
+          ? _value.errorName
+          : errorName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$CancelledByUser
-    with DiagnosticableTreeMixin
-    implements CancelledByUser {
-  _$CancelledByUser();
+class _$LocalError with DiagnosticableTreeMixin implements LocalError {
+  _$LocalError(this.errorName);
+
+  @override
+  final String errorName;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthFailure.cancelledByUser()';
+    return 'AuthFailure.remoteError(errorName: $errorName)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'AuthFailure.cancelledByUser'));
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthFailure.remoteError'))
+      ..add(DiagnosticsProperty('errorName', errorName));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CancelledByUser);
+        (other.runtimeType == runtimeType &&
+            other is _$LocalError &&
+            (identical(other.errorName, errorName) ||
+                other.errorName == errorName));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, errorName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LocalErrorCopyWith<_$LocalError> get copyWith =>
+      __$$LocalErrorCopyWithImpl<_$LocalError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancelledByUser,
+    required TResult Function(String errorName) remoteError,
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPassword,
   }) {
-    return cancelledByUser();
+    return remoteError(errorName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancelledByUser,
+    TResult? Function(String errorName)? remoteError,
     TResult? Function()? serverError,
     TResult? Function()? emailAlreadyInUse,
     TResult? Function()? invalidEmailAndPassword,
   }) {
-    return cancelledByUser?.call();
+    return remoteError?.call(errorName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancelledByUser,
+    TResult Function(String errorName)? remoteError,
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPassword,
     required TResult orElse(),
   }) {
-    if (cancelledByUser != null) {
-      return cancelledByUser();
+    if (remoteError != null) {
+      return remoteError(errorName);
     }
     return orElse();
   }
@@ -170,44 +197,49 @@ class _$CancelledByUser
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(LocalError value) remoteError,
     required TResult Function(ServerError value) serverError,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPassword value)
         invalidEmailAndPassword,
   }) {
-    return cancelledByUser(this);
+    return remoteError(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(LocalError value)? remoteError,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult? Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
   }) {
-    return cancelledByUser?.call(this);
+    return remoteError?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(LocalError value)? remoteError,
     TResult Function(ServerError value)? serverError,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
     required TResult orElse(),
   }) {
-    if (cancelledByUser != null) {
-      return cancelledByUser(this);
+    if (remoteError != null) {
+      return remoteError(this);
     }
     return orElse();
   }
 }
 
-abstract class CancelledByUser implements AuthFailure {
-  factory CancelledByUser() = _$CancelledByUser;
+abstract class LocalError implements AuthFailure {
+  factory LocalError(final String errorName) = _$LocalError;
+
+  String get errorName;
+  @JsonKey(ignore: true)
+  _$$LocalErrorCopyWith<_$LocalError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -254,7 +286,7 @@ class _$ServerError with DiagnosticableTreeMixin implements ServerError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancelledByUser,
+    required TResult Function(String errorName) remoteError,
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPassword,
@@ -265,7 +297,7 @@ class _$ServerError with DiagnosticableTreeMixin implements ServerError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancelledByUser,
+    TResult? Function(String errorName)? remoteError,
     TResult? Function()? serverError,
     TResult? Function()? emailAlreadyInUse,
     TResult? Function()? invalidEmailAndPassword,
@@ -276,7 +308,7 @@ class _$ServerError with DiagnosticableTreeMixin implements ServerError {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancelledByUser,
+    TResult Function(String errorName)? remoteError,
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPassword,
@@ -291,7 +323,7 @@ class _$ServerError with DiagnosticableTreeMixin implements ServerError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(LocalError value) remoteError,
     required TResult Function(ServerError value) serverError,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPassword value)
@@ -303,7 +335,7 @@ class _$ServerError with DiagnosticableTreeMixin implements ServerError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(LocalError value)? remoteError,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult? Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
@@ -314,7 +346,7 @@ class _$ServerError with DiagnosticableTreeMixin implements ServerError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(LocalError value)? remoteError,
     TResult Function(ServerError value)? serverError,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
@@ -378,7 +410,7 @@ class _$EmailAlreadyInUse
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancelledByUser,
+    required TResult Function(String errorName) remoteError,
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPassword,
@@ -389,7 +421,7 @@ class _$EmailAlreadyInUse
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancelledByUser,
+    TResult? Function(String errorName)? remoteError,
     TResult? Function()? serverError,
     TResult? Function()? emailAlreadyInUse,
     TResult? Function()? invalidEmailAndPassword,
@@ -400,7 +432,7 @@ class _$EmailAlreadyInUse
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancelledByUser,
+    TResult Function(String errorName)? remoteError,
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPassword,
@@ -415,7 +447,7 @@ class _$EmailAlreadyInUse
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(LocalError value) remoteError,
     required TResult Function(ServerError value) serverError,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPassword value)
@@ -427,7 +459,7 @@ class _$EmailAlreadyInUse
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(LocalError value)? remoteError,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult? Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
@@ -438,7 +470,7 @@ class _$EmailAlreadyInUse
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(LocalError value)? remoteError,
     TResult Function(ServerError value)? serverError,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
@@ -503,7 +535,7 @@ class _$InvalidEmailAndPassword
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancelledByUser,
+    required TResult Function(String errorName) remoteError,
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPassword,
@@ -514,7 +546,7 @@ class _$InvalidEmailAndPassword
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancelledByUser,
+    TResult? Function(String errorName)? remoteError,
     TResult? Function()? serverError,
     TResult? Function()? emailAlreadyInUse,
     TResult? Function()? invalidEmailAndPassword,
@@ -525,7 +557,7 @@ class _$InvalidEmailAndPassword
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancelledByUser,
+    TResult Function(String errorName)? remoteError,
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPassword,
@@ -540,7 +572,7 @@ class _$InvalidEmailAndPassword
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(LocalError value) remoteError,
     required TResult Function(ServerError value) serverError,
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPassword value)
@@ -552,7 +584,7 @@ class _$InvalidEmailAndPassword
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(CancelledByUser value)? cancelledByUser,
+    TResult? Function(LocalError value)? remoteError,
     TResult? Function(ServerError value)? serverError,
     TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult? Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,
@@ -563,7 +595,7 @@ class _$InvalidEmailAndPassword
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(LocalError value)? remoteError,
     TResult Function(ServerError value)? serverError,
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPassword value)? invalidEmailAndPassword,

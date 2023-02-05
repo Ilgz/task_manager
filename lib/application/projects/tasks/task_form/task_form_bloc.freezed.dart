@@ -728,8 +728,8 @@ mixin _$TaskFormState {
   Task get task => throw _privateConstructorUsedError;
   AutovalidateMode? get showErrorMessages => throw _privateConstructorUsedError;
   bool get isProcessing => throw _privateConstructorUsedError;
-  Option<Either<ProjectFailure, Unit>> get projectFailureSuccessOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<FirebaseFirestoreFailure, Unit>>
+      get projectFailureSuccessOption => throw _privateConstructorUsedError;
   bool get isEditing => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -747,7 +747,8 @@ abstract class $TaskFormStateCopyWith<$Res> {
       {Task task,
       AutovalidateMode? showErrorMessages,
       bool isProcessing,
-      Option<Either<ProjectFailure, Unit>> projectFailureSuccessOption,
+      Option<Either<FirebaseFirestoreFailure, Unit>>
+          projectFailureSuccessOption,
       bool isEditing});
 
   $TaskCopyWith<$Res> get task;
@@ -788,7 +789,7 @@ class _$TaskFormStateCopyWithImpl<$Res, $Val extends TaskFormState>
       projectFailureSuccessOption: null == projectFailureSuccessOption
           ? _value.projectFailureSuccessOption
           : projectFailureSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ProjectFailure, Unit>>,
+              as Option<Either<FirebaseFirestoreFailure, Unit>>,
       isEditing: null == isEditing
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
@@ -817,7 +818,8 @@ abstract class _$$_TaskFormStateCopyWith<$Res>
       {Task task,
       AutovalidateMode? showErrorMessages,
       bool isProcessing,
-      Option<Either<ProjectFailure, Unit>> projectFailureSuccessOption,
+      Option<Either<FirebaseFirestoreFailure, Unit>>
+          projectFailureSuccessOption,
       bool isEditing});
 
   @override
@@ -857,7 +859,7 @@ class __$$_TaskFormStateCopyWithImpl<$Res>
       projectFailureSuccessOption: null == projectFailureSuccessOption
           ? _value.projectFailureSuccessOption
           : projectFailureSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ProjectFailure, Unit>>,
+              as Option<Either<FirebaseFirestoreFailure, Unit>>,
       isEditing: null == isEditing
           ? _value.isEditing
           : isEditing // ignore: cast_nullable_to_non_nullable
@@ -883,7 +885,8 @@ class _$_TaskFormState implements _TaskFormState {
   @override
   final bool isProcessing;
   @override
-  final Option<Either<ProjectFailure, Unit>> projectFailureSuccessOption;
+  final Option<Either<FirebaseFirestoreFailure, Unit>>
+      projectFailureSuccessOption;
   @override
   final bool isEditing;
 
@@ -926,7 +929,7 @@ abstract class _TaskFormState implements TaskFormState {
       {required final Task task,
       final AutovalidateMode? showErrorMessages,
       required final bool isProcessing,
-      required final Option<Either<ProjectFailure, Unit>>
+      required final Option<Either<FirebaseFirestoreFailure, Unit>>
           projectFailureSuccessOption,
       required final bool isEditing}) = _$_TaskFormState;
 
@@ -937,7 +940,8 @@ abstract class _TaskFormState implements TaskFormState {
   @override
   bool get isProcessing;
   @override
-  Option<Either<ProjectFailure, Unit>> get projectFailureSuccessOption;
+  Option<Either<FirebaseFirestoreFailure, Unit>>
+      get projectFailureSuccessOption;
   @override
   bool get isEditing;
   @override

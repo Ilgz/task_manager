@@ -1,12 +1,14 @@
-part of 'project_actor_bloc.dart';
-
+part of 'project_actor_cubit.dart';
 @freezed
-abstract class ProjectActorState with _$ProjectActorState{
- const factory ProjectActorState.reInitializeProjectState()=_ReInitializeProjectState;
- const factory ProjectActorState.reInitializeTaskState()=_ReInitializeTaskState;
- const factory ProjectActorState.deleteProjectSuccess()=_DeleteProjectSuccess;
- const factory ProjectActorState.deleteProjectFailure(String failureException)=_DeleteProjectFailure;
- const factory ProjectActorState.deleteTaskSuccess()=_DeleteTaskSuccess;
- const factory ProjectActorState.deleteTaskFailure(String failureException)=_DeleteTaskFailure;
- factory ProjectActorState.initial()=_Initial;
+class ProjectActorState with _$ProjectActorState {
+ const factory ProjectActorState.getUserProjectsSuccess(List<Project> projectList)=_GetUserProjectsSuccess;
+ const factory ProjectActorState.getUserProjectsFailure(FirebaseFirestoreFailure projectFailure)=_GetUserProjectsFailure;
+ const factory ProjectActorState.changePublicityStatusSuccess()=_ChangePublicityStatusSuccess;
+ const factory ProjectActorState.changePublicityStatusFailure(FirebaseFirestoreFailure failureException)=_ChangePublicityStatusFailure;
+const factory ProjectActorState.deleteProjectSuccess()=_DeleteProjectSuccess;
+ const factory ProjectActorState.deleteProjectFailure(FirebaseFirestoreFailure failureException)=_DeleteProjectFailure;
+ const factory ProjectActorState.quitProjectSuccess()=_QuitProjectSuccess;
+ const factory ProjectActorState.quitProjectFailure(FirebaseFirestoreFailure failureException)=_QuitProjectFailure;
+const factory ProjectActorState.loadingProgressState()=_LoadingProgressState;
+ const factory ProjectActorState.initial()=_Initial;
 }

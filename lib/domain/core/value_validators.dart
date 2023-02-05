@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:task_manager/domain/auth/value_objects.dart';
 import 'package:task_manager/domain/core/failures.dart';
 Either<ValueFailure<String>,String> validateMaxStringLegth(String input,int maxLength){
   if(input.length<=maxLength){
@@ -7,8 +8,15 @@ Either<ValueFailure<String>,String> validateMaxStringLegth(String input,int maxL
     return left(ValueFailure.exceedingLength(failedValue: input, max: maxLength));
   }
 }
+Either<ValueFailure<String>,String> validateMinStringLength(String input,int minLength){
+  if(input.length>=minLength){
+    return right(input);
+  }else{
+    return left(ValueFailure.shortLength(failedValue: input, min: minLength));
+  }
+}
 Either<ValueFailure<String>, String> validateStringNotEmpty(String input){
-if(input.isNotEmpty){
+if(input.trim().isNotEmpty){
   return right(input);
 }else{
   return left(ValueFailure.empty(failedValue: input));
@@ -44,4 +52,8 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
   } else {
     return left(ValueFailure.shortPassword(failedValue: input));
   }
+}
+Either<ValueFailure<String>, String> validateConfirmationPassword(String input,Password password) {
+  return password.value.fold((_) => right(""), (password) => input==password?right(input):left(ValueFailure.passwordsDoNotMatch(failedValue: input)));
+
 }

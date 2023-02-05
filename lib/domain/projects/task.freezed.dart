@@ -20,8 +20,9 @@ mixin _$Task {
   bool get isDone => throw _privateConstructorUsedError;
   Timestamp get date => throw _privateConstructorUsedError;
   bool get isNew => throw _privateConstructorUsedError;
-  Option<DocumentReference<Object?>> get responsibleUser =>
+  Option<DocumentReference<Object?>> get assignee =>
       throw _privateConstructorUsedError;
+  bool get canChangeDoneStatus => throw _privateConstructorUsedError;
   Option<bool> get canBeModifiedAndIsAdmin =>
       throw _privateConstructorUsedError;
 
@@ -39,7 +40,8 @@ abstract class $TaskCopyWith<$Res> {
       bool isDone,
       Timestamp date,
       bool isNew,
-      Option<DocumentReference<Object?>> responsibleUser,
+      Option<DocumentReference<Object?>> assignee,
+      bool canChangeDoneStatus,
       Option<bool> canBeModifiedAndIsAdmin});
 }
 
@@ -60,7 +62,8 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? isDone = null,
     Object? date = null,
     Object? isNew = null,
-    Object? responsibleUser = null,
+    Object? assignee = null,
+    Object? canChangeDoneStatus = null,
     Object? canBeModifiedAndIsAdmin = null,
   }) {
     return _then(_value.copyWith(
@@ -80,10 +83,14 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
-      responsibleUser: null == responsibleUser
-          ? _value.responsibleUser
-          : responsibleUser // ignore: cast_nullable_to_non_nullable
+      assignee: null == assignee
+          ? _value.assignee
+          : assignee // ignore: cast_nullable_to_non_nullable
               as Option<DocumentReference<Object?>>,
+      canChangeDoneStatus: null == canChangeDoneStatus
+          ? _value.canChangeDoneStatus
+          : canChangeDoneStatus // ignore: cast_nullable_to_non_nullable
+              as bool,
       canBeModifiedAndIsAdmin: null == canBeModifiedAndIsAdmin
           ? _value.canBeModifiedAndIsAdmin
           : canBeModifiedAndIsAdmin // ignore: cast_nullable_to_non_nullable
@@ -103,7 +110,8 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
       bool isDone,
       Timestamp date,
       bool isNew,
-      Option<DocumentReference<Object?>> responsibleUser,
+      Option<DocumentReference<Object?>> assignee,
+      bool canChangeDoneStatus,
       Option<bool> canBeModifiedAndIsAdmin});
 }
 
@@ -120,7 +128,8 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
     Object? isDone = null,
     Object? date = null,
     Object? isNew = null,
-    Object? responsibleUser = null,
+    Object? assignee = null,
+    Object? canChangeDoneStatus = null,
     Object? canBeModifiedAndIsAdmin = null,
   }) {
     return _then(_$_Task(
@@ -140,10 +149,14 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
-      responsibleUser: null == responsibleUser
-          ? _value.responsibleUser
-          : responsibleUser // ignore: cast_nullable_to_non_nullable
+      assignee: null == assignee
+          ? _value.assignee
+          : assignee // ignore: cast_nullable_to_non_nullable
               as Option<DocumentReference<Object?>>,
+      canChangeDoneStatus: null == canChangeDoneStatus
+          ? _value.canChangeDoneStatus
+          : canChangeDoneStatus // ignore: cast_nullable_to_non_nullable
+              as bool,
       canBeModifiedAndIsAdmin: null == canBeModifiedAndIsAdmin
           ? _value.canBeModifiedAndIsAdmin
           : canBeModifiedAndIsAdmin // ignore: cast_nullable_to_non_nullable
@@ -160,7 +173,8 @@ class _$_Task extends _Task {
       required this.isDone,
       required this.date,
       this.isNew = false,
-      required this.responsibleUser,
+      required this.assignee,
+      required this.canChangeDoneStatus,
       required this.canBeModifiedAndIsAdmin})
       : super._();
 
@@ -174,13 +188,15 @@ class _$_Task extends _Task {
   @JsonKey()
   final bool isNew;
   @override
-  final Option<DocumentReference<Object?>> responsibleUser;
+  final Option<DocumentReference<Object?>> assignee;
+  @override
+  final bool canChangeDoneStatus;
   @override
   final Option<bool> canBeModifiedAndIsAdmin;
 
   @override
   String toString() {
-    return 'Task(taskName: $taskName, isDone: $isDone, date: $date, isNew: $isNew, responsibleUser: $responsibleUser, canBeModifiedAndIsAdmin: $canBeModifiedAndIsAdmin)';
+    return 'Task(taskName: $taskName, isDone: $isDone, date: $date, isNew: $isNew, assignee: $assignee, canChangeDoneStatus: $canChangeDoneStatus, canBeModifiedAndIsAdmin: $canBeModifiedAndIsAdmin)';
   }
 
   @override
@@ -193,8 +209,10 @@ class _$_Task extends _Task {
             (identical(other.isDone, isDone) || other.isDone == isDone) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.isNew, isNew) || other.isNew == isNew) &&
-            (identical(other.responsibleUser, responsibleUser) ||
-                other.responsibleUser == responsibleUser) &&
+            (identical(other.assignee, assignee) ||
+                other.assignee == assignee) &&
+            (identical(other.canChangeDoneStatus, canChangeDoneStatus) ||
+                other.canChangeDoneStatus == canChangeDoneStatus) &&
             (identical(
                     other.canBeModifiedAndIsAdmin, canBeModifiedAndIsAdmin) ||
                 other.canBeModifiedAndIsAdmin == canBeModifiedAndIsAdmin));
@@ -202,7 +220,7 @@ class _$_Task extends _Task {
 
   @override
   int get hashCode => Object.hash(runtimeType, taskName, isDone, date, isNew,
-      responsibleUser, canBeModifiedAndIsAdmin);
+      assignee, canChangeDoneStatus, canBeModifiedAndIsAdmin);
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +235,8 @@ abstract class _Task extends Task {
       required final bool isDone,
       required final Timestamp date,
       final bool isNew,
-      required final Option<DocumentReference<Object?>> responsibleUser,
+      required final Option<DocumentReference<Object?>> assignee,
+      required final bool canChangeDoneStatus,
       required final Option<bool> canBeModifiedAndIsAdmin}) = _$_Task;
   _Task._() : super._();
 
@@ -230,7 +249,9 @@ abstract class _Task extends Task {
   @override
   bool get isNew;
   @override
-  Option<DocumentReference<Object?>> get responsibleUser;
+  Option<DocumentReference<Object?>> get assignee;
+  @override
+  bool get canChangeDoneStatus;
   @override
   Option<bool> get canBeModifiedAndIsAdmin;
   @override
