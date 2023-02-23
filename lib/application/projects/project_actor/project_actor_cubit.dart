@@ -1,11 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:task_manager/domain/projects/i_project_repository.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/domain/projects/project_failure.dart';
-import 'package:task_manager/domain/projects/task.dart';
 
 import '../../../domain/users/user.dart';
 

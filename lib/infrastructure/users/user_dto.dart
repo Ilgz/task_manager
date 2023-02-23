@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:task_manager/domain/users/user.dart';
 import 'package:task_manager/domain/auth/value_objects.dart';
 import 'package:task_manager/infrastructure/core/firestore_helpers.dart';
-import 'package:task_manager/infrastructure/projects/project_dto.dart';
 part 'user_dto.freezed.dart';
 part 'user_dto.g.dart';
 @freezed

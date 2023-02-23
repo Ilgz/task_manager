@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/application/auth/auth_bloc.dart';
 import 'package:task_manager/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:task_manager/injection.dart';
-import 'package:task_manager/presentation/core/constants.dart';
 import 'package:task_manager/presentation/core/widgets/custom_scaffold.dart';
 import 'package:task_manager/presentation/core/routes/router.dart';
 class SignInPage extends StatelessWidget {
@@ -103,7 +102,7 @@ class SignInPage extends StatelessWidget {
                             context.read<SignInFormBloc>().add(SignInFormEvent.signInWithEmailAndPasswordPressed());
                           }, child: state.isSubmitting?const SizedBox(height:20,width:20,child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white),)):const Text("Sign in")),
                         ),
-                        SizedBox(height: 24,),
+                        const SizedBox(height: 24,),
                         Center(
                           child: RichText(text: TextSpan(children: [
                               const TextSpan(
@@ -114,7 +113,7 @@ class SignInPage extends StatelessWidget {
                             },))
                                 ]),),
                         ),
-                        SizedBox(height: 8,),
+                        const SizedBox(height: 8,),
                         // ↑ Navigate to new page here
                       ],
                     ));

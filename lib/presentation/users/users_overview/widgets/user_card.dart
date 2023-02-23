@@ -2,13 +2,11 @@ import 'package:dartz/dartz.dart' hide Task;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:task_manager/application/projects/project_actor/project_actor_cubit.dart';
 import 'package:task_manager/application/projects/tasks/task_actor/task_actor_cubit.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/domain/projects/task.dart';
 import 'package:task_manager/domain/users/user.dart';
 import 'package:task_manager/injection.dart';
-import 'package:task_manager/presentation/core/constants.dart';
 import 'package:task_manager/presentation/core/widgets/failure_snackbar.dart';
 import 'package:task_manager/presentation/core/routes/router.dart';
 import 'package:task_manager/presentation/users/users_overview/widgets/user_icon.dart';
@@ -82,7 +80,7 @@ class UserCard extends StatelessWidget {
                               projectAndOptionTask!.value1.owner.reference == user.reference
                                   ? "Админ"
                                   : "Участник",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
@@ -125,7 +123,7 @@ class UserCard extends StatelessWidget {
                                                   width: 2.0,
                                                 ),
                                               ),
-                                              child: Icon(
+                                              child: const Icon(
                                                 Icons.remove,
                                                 color: Colors.red,
                                                 size: 22,
@@ -157,7 +155,7 @@ class UserCard extends StatelessWidget {
                                 },
                               )
                             ]else...[
-                              projectAndOptionTask!.value2!.assignee.fold(() => const SizedBox(), (owner) => owner!=user.reference?SizedBox():Icon(Icons.star,color: Theme.of(context).primaryColor,))
+                              projectAndOptionTask!.value2!.assignee.fold(() => const SizedBox(), (owner) => owner!=user.reference?const SizedBox():Icon(Icons.star,color: Theme.of(context).primaryColor,))
                             ]
 
                       ]

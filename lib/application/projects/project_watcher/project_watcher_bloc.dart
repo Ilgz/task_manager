@@ -1,10 +1,8 @@
-import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:task_manager/domain/projects/i_project_repository.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/domain/projects/project_failure.dart';

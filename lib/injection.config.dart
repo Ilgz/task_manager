@@ -67,13 +67,14 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
-    final appInjectableModule = _$AppInjectableModule();
-    gh.lazySingleton<_i3.Client>(() => appInjectableModule.httpClient);
-    gh.lazySingleton<_i4.FirebaseAuth>(() => appInjectableModule.firebaseAuth);
+    final appInjectableProdModule = _$AppInjectableProdModule();
+    gh.lazySingleton<_i3.Client>(() => appInjectableProdModule.httpClient);
+    gh.lazySingleton<_i4.FirebaseAuth>(
+        () => appInjectableProdModule.firebaseAuthDev);
     gh.lazySingleton<_i5.FirebaseFirestore>(
-        () => appInjectableModule.firebaseFirestore);
+        () => appInjectableProdModule.firebaseFirestoreDev);
     gh.lazySingleton<_i6.FlutterSecureStorage>(
-        () => appInjectableModule.storage);
+        () => appInjectableProdModule.storage);
     gh.lazySingleton<_i7.IAuthFacade>(() => _i8.FirebaseAuthFacade(
           gh<_i4.FirebaseAuth>(),
           gh<_i5.FirebaseFirestore>(),
@@ -98,7 +99,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i19.ProjectWatcherBloc>(
         () => _i19.ProjectWatcherBloc(gh<_i11.IProjectRepository>()));
     await gh.factoryAsync<_i20.SharedPreferences>(
-      () => appInjectableModule.sharedPreferences,
+      () => appInjectableProdModule.sharedPreferences,
       preResolve: true,
     );
     gh.factory<_i21.SignInFormBloc>(
@@ -122,4 +123,4 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$AppInjectableModule extends _i31.AppInjectableModule {}
+class _$AppInjectableProdModule extends _i31.AppInjectableProdModule {}

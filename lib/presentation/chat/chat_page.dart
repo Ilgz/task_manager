@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:task_manager/application/chat/chat_form_bloc/chat_form_bloc.dart';
 import 'package:task_manager/application/projects/project_watcher/project_watcher_bloc.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/presentation/chat/widgets/chat_day_divider_card.dart';
 import 'package:task_manager/presentation/chat/widgets/message_card.dart';
-import 'package:task_manager/presentation/core/constants.dart';
 import 'package:task_manager/presentation/core/widgets/custom_scaffold.dart';
 import 'package:task_manager/presentation/core/widgets/failure_snackbar.dart';
 import 'package:task_manager/presentation/core/widgets/no_result_card.dart';
@@ -77,11 +75,11 @@ class ChatPage extends StatelessWidget {
                                   return Column(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Padding(padding: EdgeInsets.only(top:10.0), child: ChatDayDividerCard(date: messages[index].date.toDate())),
+                                      Padding(padding: const EdgeInsets.only(top:10.0), child: ChatDayDividerCard(date: messages[index].date.toDate())),
                                     ],
                                   );
                                 }
-                                return SizedBox();
+                                return const SizedBox();
                               },
                               //controller: listScrollController,
                             );

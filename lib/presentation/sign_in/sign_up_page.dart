@@ -161,7 +161,7 @@ class SignUpPage extends StatelessWidget {
                               context.read<SignUpFormBloc>().add(SignUpFormEvent.registerWithEmailAndPasswordPressed());
                             }, child: state.isSubmitting?const SizedBox(height:20,width:20,child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white),)):const Text("Sign up")),
                           ),
-                          SizedBox(height: 24,),
+                          const SizedBox(height: 24,),
                           Center(
                             child: RichText(text: TextSpan(children: [
                               const TextSpan(
@@ -172,7 +172,7 @@ class SignUpPage extends StatelessWidget {
                               },))
                             ]),),
                           ),
-                          SizedBox(height: 8,),
+                          const SizedBox(height: 8,),
                           // ↑ Navigate to new page here
                         ],
                       ));

@@ -1,11 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/domain/auth/i_auth_facade.dart';
 import 'package:task_manager/domain/chat/message_chat.dart';
-import 'package:task_manager/domain/projects/project.dart';
-import 'package:task_manager/infrastructure/chat/message_chat_dto.dart';
-import 'package:task_manager/injection.dart';
-import 'package:task_manager/presentation/core/constants.dart';
 import 'package:intl/intl.dart';
 import 'package:task_manager/presentation/core/utils/name_color_generator.dart';
 

@@ -9,11 +9,11 @@ class ProjectCriticalFailureDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(mainAxisSize:MainAxisSize.min,children:[
-        Text("😱",style: TextStyle(fontSize:100),),
-        Text(failure.maybeMap(insufficientPermission:(_)=>"Insufficient permissions",orElse: ()=>"Unexpected error. \nPlease, contact support"),style:TextStyle(fontSize:24),textAlign:TextAlign.center),
-        TextButton(onPressed:(){},child:Row(mainAxisSize:MainAxisSize.min,children:[
+        const Text("😱",style: TextStyle(fontSize:100),),
+        Text(failure.maybeMap(insufficientPermission:(_)=>"Insufficient permissions",orElse: ()=>"Unexpected error. \nPlease, contact support"),style:const TextStyle(fontSize:24),textAlign:TextAlign.center),
+        TextButton(onPressed:(){},child:Row(mainAxisSize:MainAxisSize.min,children:const [
           Icon(Icons.mail),
-          const SizedBox(height:4),
+          SizedBox(height:4),
           Text("I need help")
         ]))
       ]),

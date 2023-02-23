@@ -24,7 +24,7 @@ class TasksOverviewPage extends StatelessWidget {
               onPressed: () {
                 goToMembersPage(context, initialProject);
               },
-              icon: Icon(Icons.more_horiz_outlined))
+              icon: const Icon(Icons.more_horiz_outlined))
         ],
         appBarTitle: initialProject.projectName.getOrCrash(),
         floatingActionButton: initialProject.canBeModifiedAndIsAdmin.fold(

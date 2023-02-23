@@ -8,7 +8,6 @@ import 'package:task_manager/domain/core/errors.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/domain/projects/project_failure.dart';
 import 'package:task_manager/infrastructure/chat/message_chat_dto.dart';
-import 'package:task_manager/infrastructure/core/firestore_helpers.dart';
 import 'package:task_manager/injection.dart';
 @LazySingleton(as: IChatFacade)
 class ChatFacade implements IChatFacade{

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/domain/projects/project_failure.dart';
 import 'package:task_manager/domain/users/user_failure.dart';
 
 class UserCriticalFailureDisplay extends StatelessWidget {

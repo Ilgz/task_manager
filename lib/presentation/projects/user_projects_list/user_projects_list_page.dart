@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/application/projects/project_actor/project_actor_cubit.dart';
 import 'package:task_manager/domain/users/user.dart';
 import 'package:task_manager/injection.dart';
-import 'package:task_manager/presentation/core/constants.dart';
 import 'package:task_manager/presentation/core/widgets/custom_scaffold.dart';
 import 'package:task_manager/presentation/core/widgets/failure_snackbar.dart';
 import 'package:task_manager/presentation/core/widgets/no_result_card.dart';
@@ -75,7 +74,7 @@ class UserProjectsListPage extends StatelessWidget {
                           "No projects found", Icons.account_tree_outlined);
                     }
                   },
-                  orElse: () => SizedBox());
+                  orElse: () => const SizedBox());
             },
           ),
         ),

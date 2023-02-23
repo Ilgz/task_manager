@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart' hide Task;
 import 'dart:async';
-import 'package:async/async.dart' show StreamGroup;
-import 'package:rxdart/rxdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:task_manager/domain/auth/i_auth_facade.dart';
-import 'package:task_manager/domain/chat/i_chat_facade.dart';
 import 'package:task_manager/domain/chat/message_chat.dart';
 import 'package:task_manager/domain/core/errors.dart';
 import 'package:task_manager/domain/projects/i_project_repository.dart';
@@ -20,18 +17,18 @@ import 'package:task_manager/injection.dart';
 
 @LazySingleton(as: IProjectRepository)
 class ProjectRepository implements IProjectRepository {
-  final FirebaseFirestore _firebaseFirestore;
+  final FirebaseFirestore firebaseFirestore;
   final IAuthFacade _authFacade;
-  ProjectRepository(this._firebaseFirestore,this._authFacade);
+  ProjectRepository(this.firebaseFirestore, this._authFacade);
   @override
   Stream<Either<FirebaseFirestoreFailure, List<Project>>> watchAllProjects() async* {
-    final userOption =  getIt<IAuthFacade>().getSignedInUserId();
+    final userOption =  _authFacade.getSignedInUserId();
     final userId =
         "users/${userOption.getOrElse(() => throw NotAuthenticatedError())}";
     Stream<Either<FirebaseFirestoreFailure, List<ProjectDto>>> dtoStream =
-    _firebaseFirestore.projectCollection
+    firebaseFirestore.projectCollection
         .where("members",
-        arrayContains: _firebaseFirestore.doc(userId))
+        arrayContains: firebaseFirestore.doc(userId))
         .snapshots()
         .map((projects) => right<FirebaseFirestoreFailure, List<ProjectDto>>(
         projects.docs.map((project) {
@@ -119,18 +116,18 @@ class ProjectRepository implements IProjectRepository {
   @override
   Future<Either<FirebaseFirestoreFailure, Unit>> createProject(Project project) async {
     try {
-      final userOption = getIt<IAuthFacade>().getSignedInUserId();
+      final userOption = _authFacade.getSignedInUserId();
       final userId = userOption
           .getOrElse(() => throw NotAuthenticatedError())
           ;
       project = project.copyWith(
           owner: User.empty()
-              .copyWith(reference: _firebaseFirestore.doc("users/$userId")));
+              .copyWith(reference: firebaseFirestore.doc("users/$userId")));
       project = project.copyWith(members: [
         User.empty()
-            .copyWith(reference: _firebaseFirestore.doc("users/$userId"))
+            .copyWith(reference: firebaseFirestore.doc("users/$userId"))
       ]);
-      await _firebaseFirestore.projectCollection.add(
+      await firebaseFirestore.projectCollection.add(
           ProjectDto.fromDomain(project).copyWith(reference: null).toJson());
       return right(unit);
     } on FirebaseException catch (e) {
@@ -300,11 +297,11 @@ class ProjectRepository implements IProjectRepository {
   Future<Either<FirebaseFirestoreFailure, List<Project>>> getUserProjects(
       User user) async {
     try {
-      final userOption = getIt<IAuthFacade>().getSignedInUserId();
+      final userOption =_authFacade.getSignedInUserId();
       final userId = "users/${userOption
           .getOrElse(() => throw NotAuthenticatedError())
           }";
-      final data = (await _firebaseFirestore
+      final data = (await firebaseFirestore
           .projectCollection
           .where("members", arrayContains: user.reference)
           .where("isPublic", isEqualTo: true)
@@ -376,7 +373,7 @@ class ProjectRepository implements IProjectRepository {
   @override
   Future<Either<FirebaseFirestoreFailure, Unit>> quitProject(Project project) async{
     try {
-      final userOption =  getIt<IAuthFacade>().getSignedInUserId();
+      final userOption =  _authFacade.getSignedInUserId();
       final userId =
           userOption.getOrElse(() => throw NotAuthenticatedError());
       List<Task> assignedTasks=project.tasks.where((task) => task.assignee.fold(() => false, (assignee) => assignee.id==userId)).toList();
@@ -391,7 +388,7 @@ class ProjectRepository implements IProjectRepository {
       }
       await project.reference.update({
         "members": FieldValue.arrayRemove([
-          _firebaseFirestore.doc("users/$userId")
+          firebaseFirestore.doc("users/$userId")
         ])
       });
       return right(unit);

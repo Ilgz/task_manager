@@ -34,10 +34,10 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
   }
 
   final List<Widget> _mainContents = [
-    UsersOverviewPage(),
-    ProjectsOverviewPage(),
-    ChatsOverviewPage(),
-    ProfilePage()
+    const UsersOverviewPage(),
+    const ProjectsOverviewPage(),
+    const ChatsOverviewPage(),
+    const ProfilePage()
   ];
 
   @override
@@ -58,15 +58,15 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
                   // selectedLabelTextStyle:TextStyle(color:AppConstants.primaryColor ),
                   labelType: NavigationRailLabelType.all,
                   leading: Column(
-                    children: [
+                    children: const [
                       SizedBox(
                         height: 8,
                       ),
                     ],
                   ),
-                  selectedIconTheme: IconThemeData(color: Colors.white) ,
-                  selectedLabelTextStyle: TextStyle(color: Colors.white),
-                  destinations: [
+                  selectedIconTheme: const IconThemeData(color: Colors.white) ,
+                  selectedLabelTextStyle: const TextStyle(color: Colors.white),
+                  destinations: const [
                     NavigationRailDestination(
                       icon: Icon(Icons.home),
                       label: Text("Главная"),

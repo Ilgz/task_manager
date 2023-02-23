@@ -16,7 +16,7 @@ class ChatCard extends StatelessWidget {
       },
       leading: CircleAvatar(
         backgroundColor: Colors.grey.shade400,
-        child: Icon(Icons.group, color: Colors.white),
+        child: const Icon(Icons.group, color: Colors.white),
       ),
       title: Text(project.projectName.getOrCrash(),style: Theme.of(context).textTheme.bodyText1,),
       subtitle: () {

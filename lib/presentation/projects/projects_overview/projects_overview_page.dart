@@ -1,15 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:task_manager/application/auth/auth_bloc.dart';
 import 'package:task_manager/application/projects/project_filter/project_filter_bloc.dart';
-import 'package:task_manager/application/projects/project_form/project_form_bloc.dart';
 import 'package:task_manager/application/projects/project_watcher/project_watcher_bloc.dart';
 import 'package:task_manager/domain/projects/project.dart';
-import 'package:task_manager/domain/projects/value_objects.dart';
-import 'package:task_manager/injection.dart';
-import 'package:task_manager/presentation/core/constants.dart';
 import 'package:task_manager/presentation/core/enums.dart';
 import 'package:task_manager/presentation/core/widgets/custom_scaffold.dart';
 import 'package:task_manager/presentation/core/widgets/no_result_card.dart';
@@ -39,12 +33,12 @@ class ProjectsOverviewPage extends StatelessWidget {
                       return Center(
                         child: Text(
                           value.description,
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                       );
                     }).toList();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.expand_more_outlined,
                     color: Colors.white,
                   ),
@@ -110,7 +104,7 @@ class ProjectsOverviewPage extends StatelessWidget {
                showModalBottomSheet(context: context,isScrollControlled:true,builder: (context){
                  return const AddProjectDialog();
                });
-          }, child: Icon(Icons.add,color: Colors.white,))
+          }, child: const Icon(Icons.add,color: Colors.white,))
        );
   }
   List<Project> sortProjectByDateAndType(List<Project> projects,ProjectFilterState typeState){

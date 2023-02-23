@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:task_manager/application/projects/tasks/task_form/task_form_bloc.dart';
-import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/injection.dart';
 import 'package:task_manager/presentation/core/widgets/failure_snackbar.dart';
 
@@ -68,11 +65,11 @@ class AddTaskDialog extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyText1
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               ElevatedButton(style:Theme.of(context).elevatedButtonTheme.style,onPressed: state.isProcessing?null:(){
                 context.read<TaskFormBloc>().add(TaskFormEvent.saveTask(documentReference,context.read<TaskFormBloc>().state.task));
               }, child: state.isProcessing?const SizedBox(height:20,width:20,child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.white),)):const Text("Create")),
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
             ],),
           );
         },

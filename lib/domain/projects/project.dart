@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart' hide Task;
+import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:task_manager/domain/chat/message_chat.dart';
 import 'package:task_manager/domain/core/failures.dart';
@@ -26,8 +27,11 @@ abstract class Project implements _$Project {
     required List<MessageChat> messages,
     @Default(false) bool isNew
   }  ) = _Project;
-  factory Project.empty() {
-    return Project(projectName:ProjectName(""),messages:[],isPublic:true,owner:User.empty(),reference:FirebaseFirestore.instance.dummyRef,date: Timestamp.now(),members: [],canBeModifiedAndIsAdmin: some(true),tasks: [],isNew: true);}
+  factory Project.empty({
+    FirebaseFirestore? firebaseFirestore
+  }) {
+    final dummyRef=(firebaseFirestore??FakeFirebaseFirestore()).dummyRef;
+    return Project(projectName:ProjectName(""),messages:[],isPublic:true,owner:User.empty(),reference:dummyRef,date: Timestamp.now(),members: [],canBeModifiedAndIsAdmin: some(true),tasks: [],isNew: true);}
   Option<ValueFailure<dynamic>> get failureOption {
     return projectName.failureOrUnit
         .andThen(tasks

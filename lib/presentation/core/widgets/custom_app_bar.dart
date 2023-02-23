@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:task_manager/presentation/core/constants.dart';
 
 class CustomAppBar extends AppBar {
   final String? textTitle;
   final TextStyle? textStyle;
   final IconData? leadingIconData;
+  @override
   final List<Widget> actions;
   CustomAppBar({
     Key? key,

@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart' hide Task;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:task_manager/domain/chat/message_chat.dart';
 import 'package:task_manager/domain/chat/value_objects.dart';

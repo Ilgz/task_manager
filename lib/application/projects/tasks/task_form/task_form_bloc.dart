@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,7 +5,6 @@ import 'package:dartz/dartz.dart' hide Task;
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:task_manager/domain/projects/i_project_repository.dart';
 import 'package:task_manager/domain/projects/project_failure.dart';
 import 'package:task_manager/domain/projects/task.dart';

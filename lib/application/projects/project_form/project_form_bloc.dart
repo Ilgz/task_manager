@@ -3,7 +3,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:task_manager/domain/projects/i_project_repository.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/domain/projects/project_failure.dart';

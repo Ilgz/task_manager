@@ -20,7 +20,7 @@ class UserIcon extends StatelessWidget {
             child: Text(
               name[0].toUpperCase(),
 
-              style: TextStyle(color: Colors.white,fontSize: 400),
+              style: const TextStyle(color: Colors.white,fontSize: 400),
             ),
           ),
         ),

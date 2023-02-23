@@ -69,14 +69,14 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10.0,
                                 ),
                                 Text(
                                   user.emailAddress.getOrCrash(),
                                   style: Theme.of(context).textTheme.titleLarge
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20.0,
                                 ),
                                 ElevatedButton(
@@ -86,7 +86,7 @@ class ProfilePage extends StatelessWidget {
                                         .read<AuthBloc>()
                                         .add(AuthEvent.signedOut());
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Logout",
                                   ),
                                 ),
@@ -102,7 +102,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 );
               },
-              getSignedInUserFailure: (_) => SizedBox());
+              getSignedInUserFailure: (_) => const SizedBox());
         },
       ),
     );

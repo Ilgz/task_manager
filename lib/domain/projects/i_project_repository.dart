@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart' hide Task;
-import 'package:task_manager/domain/core/failures.dart';
 import 'package:task_manager/domain/projects/project.dart';
 import 'package:task_manager/domain/projects/project_failure.dart';
 import 'package:task_manager/domain/projects/task.dart';

@@ -1,23 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
-import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:task_manager/domain/auth/auth_failure.dart';
 import 'package:task_manager/domain/auth/i_auth_facade.dart';
 import 'package:task_manager/domain/auth/value_objects.dart';
 import 'package:task_manager/domain/core/errors.dart';
-import 'package:task_manager/domain/core/failures.dart';
 import 'package:task_manager/domain/users/user.dart';
 import 'package:task_manager/infrastructure/core/firestore_helpers.dart';
 import 'package:task_manager/infrastructure/users/user_dto.dart';
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
-
   final FirebaseAuth _firebaseAuth;
   final FirebaseFirestore _firebaseFirestore;
   FirebaseAuthFacade(this._firebaseAuth,this._firebaseFirestore);
-
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
       {required UserName userName,required EmailAddress emailAddress, required Password password}) async {

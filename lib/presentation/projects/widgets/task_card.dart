@@ -97,7 +97,7 @@ class TaskCardForm extends StatelessWidget {
     }, child: BlocBuilder<TaskFormBloc, TaskFormState>(
       builder: (context, state) {
         return Card(
-          margin: EdgeInsets.only(top: 5),
+          margin: const EdgeInsets.only(top: 5),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(children: [
@@ -106,9 +106,9 @@ class TaskCardForm extends StatelessWidget {
                 height: 40,
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderRadius: const BorderRadius.all(Radius.circular(30)),
                 ),
-                child: Icon(Icons.assignment, color: Colors.white),
+                child: const Icon(Icons.assignment, color: Colors.white),
               ),
               const SizedBox(
                 width: 10,
@@ -136,7 +136,7 @@ class TaskCardForm extends StatelessWidget {
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(30),
                     ],
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         isDense: true,
                         border: UnderlineInputBorder(),
                         contentPadding:
@@ -188,7 +188,7 @@ class TaskCardForm extends StatelessWidget {
                                 .read<TaskFormBloc>()
                                 .add(TaskFormEvent.changeEditingState(false));
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.close,
                           color: Colors.red,
                         )),
@@ -197,7 +197,7 @@ class TaskCardForm extends StatelessWidget {
                          context.read<TaskFormBloc>().add(TaskFormEvent.saveTask(
                               project.reference, initialTask));
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.done,
                           color: Colors.green,
                         )),
@@ -272,7 +272,7 @@ class TaskCardForm extends StatelessWidget {
                           ),
                         ),
                       ],
-                      offset: Offset(0, 0),
+                      offset: const Offset(0, 0),
                       elevation: 8,
                     ),
                   ],

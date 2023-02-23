@@ -2,15 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:injectable/injectable.dart';
-import 'package:task_manager/domain/auth/i_auth_facade.dart';
 import 'package:task_manager/domain/core/errors.dart';
-import 'package:task_manager/domain/projects/project_failure.dart';
 import 'package:task_manager/domain/users/i_user_repository.dart';
 import 'package:task_manager/domain/users/user.dart';
 import 'package:task_manager/domain/users/user_failure.dart';
 import 'package:task_manager/infrastructure/core/firestore_helpers.dart';
 import 'package:task_manager/infrastructure/users/user_dto.dart';
-import 'package:task_manager/injection.dart';
 
 @LazySingleton(as: IUserRepository)
 class UserRepository implements IUserRepository {

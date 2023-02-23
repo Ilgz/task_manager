@@ -127,10 +127,10 @@ class LinearPercentIndicator extends StatefulWidget {
       throw ArgumentError(
           'Cannot provide both linearGradientBackgroundColor and backgroundColor');
     }
-    _backgroundColor = backgroundColor ?? Color(0xFFB8C7CB);
+    _backgroundColor = backgroundColor ?? const Color(0xFFB8C7CB);
 
     if (percent < 0.0 || percent > 1.0) {
-      throw new Exception(
+      throw Exception(
           "Percent value must be a double between 0.0 and 1.0, but it's $percent");
     }
   }
@@ -318,8 +318,8 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
 }
 
 class _LinearPainter extends CustomPainter {
-  final Paint _paintBackground = new Paint();
-  final Paint _paintLine = new Paint();
+  final Paint _paintBackground = Paint();
+  final Paint _paintLine = Paint();
   final double progress;
   final bool isRTL;
   final Color progressColor;

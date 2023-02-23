@@ -9,6 +9,6 @@ class UserSearcherCubit extends Cubit<UserSearcherState> {
   UserSearcherCubit() : super(const UserSearcherState.initial());
   void searchUsers(List<User> userList,String query){
     List<User> searchedUsers=userList.where((user) => user.userName.getOrCrash().toLowerCase().contains(query.toLowerCase())).toList();
-    emit(searchedUsers.isNotEmpty?UserSearcherState.searchSuccess(searchedUsers):UserSearcherState.searchFailure());
+    emit(searchedUsers.isNotEmpty?UserSearcherState.searchSuccess(searchedUsers):const UserSearcherState.searchFailure());
 }
 }

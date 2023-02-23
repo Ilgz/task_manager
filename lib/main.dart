@@ -10,12 +10,6 @@ void main() async {
   await configureInjection(Environment.prod);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const AppWidget());
-
 }
 
-class Lesson {
-  final String name;
-  final DateTime dateTime;
 
-  Lesson(this.name, this.dateTime);
-}
