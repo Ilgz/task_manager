@@ -12,8 +12,9 @@ extension FireStoreX on FirebaseFirestore{
   CollectionReference get projectCollection => collection("projects");
   CollectionReference get userCollection => collection("users");
   CollectionReference get chatCollection => collection("chat");
-  DocumentReference get dummyRef => doc("/");
+  DocumentReference get dummyRef => doc("test/test");
 }
+
 class DocumentReferenceConverter
     implements JsonConverter<DocumentReference, DocumentReference> {
   const DocumentReferenceConverter();

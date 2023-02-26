@@ -25,6 +25,7 @@ class ProjectWatcherBloc
         iProjectRepository.watchAllProjects().listen((projects) {
           add(ProjectWatcherEvent.receiveProjects(projects));
         });
+
       },
           receiveProjects: (e) {
         emit(e.failureOrProjects.fold((f) => ProjectWatcherState.loadFailure(f),

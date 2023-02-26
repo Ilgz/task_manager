@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart' hide Task;
 import 'dart:async';
@@ -13,15 +14,16 @@ import 'package:task_manager/domain/users/user.dart';
 import 'package:task_manager/infrastructure/core/firestore_helpers.dart';
 import 'package:task_manager/infrastructure/projects/project_dto.dart';
 import 'package:task_manager/infrastructure/users/user_dto.dart';
-import 'package:task_manager/injection.dart';
-
 @LazySingleton(as: IProjectRepository)
 class ProjectRepository implements IProjectRepository {
   final FirebaseFirestore firebaseFirestore;
   final IAuthFacade _authFacade;
-  ProjectRepository(this.firebaseFirestore, this._authFacade);
+  final bool isTest;
+  ProjectRepository(this.firebaseFirestore, this._authFacade,{this.isTest=false});
+
   @override
   Stream<Either<FirebaseFirestoreFailure, List<Project>>> watchAllProjects() async* {
+
     final userOption =  _authFacade.getSignedInUserId();
     final userId =
         "users/${userOption.getOrElse(() => throw NotAuthenticatedError())}";
@@ -34,7 +36,6 @@ class ProjectRepository implements IProjectRepository {
         projects.docs.map((project) {
           return ProjectDto.fromFirestore(project);
         }).toList()));
-
     await for (final dtoProject in dtoStream) {
       final a=await Future.wait((await Future.wait(dtoProject
           .getOrElse(() => [])
@@ -53,6 +54,7 @@ class ProjectRepository implements IProjectRepository {
       yield right(a);
     }
   }
+
   Future<List<MessageChat>> getUsersForMessages(Project project)async{
       if(project.messages.isEmpty){return [];}
       //print(project.messages);
@@ -114,21 +116,26 @@ class ProjectRepository implements IProjectRepository {
   }
 
   @override
-  Future<Either<FirebaseFirestoreFailure, Unit>> createProject(Project project) async {
+  Future<Either<FirebaseFirestoreFailure, Unit>> createProject(Project project,{String? documentId}) async {
     try {
       final userOption = _authFacade.getSignedInUserId();
       final userId = userOption
           .getOrElse(() => throw NotAuthenticatedError())
           ;
       project = project.copyWith(
-          owner: User.empty()
+          owner: User.empty(firebaseFirestore: firebaseFirestore)
               .copyWith(reference: firebaseFirestore.doc("users/$userId")));
       project = project.copyWith(members: [
-        User.empty()
+        User.empty(firebaseFirestore: firebaseFirestore)
             .copyWith(reference: firebaseFirestore.doc("users/$userId"))
       ]);
-      await firebaseFirestore.projectCollection.add(
-          ProjectDto.fromDomain(project).copyWith(reference: null).toJson());
+      final projectDto=ProjectDto.fromDomain(project).copyWith(reference: null).toJson();
+      if(documentId==null){
+        await firebaseFirestore.projectCollection.add(projectDto);
+      }else{
+        await firebaseFirestore.projectCollection.doc(documentId).set(projectDto);
+      }
+
       return right(unit);
     } on FirebaseException catch (e) {
       if (e.message!.contains('PERMISSION_DENIED')) {
@@ -163,6 +170,7 @@ class ProjectRepository implements IProjectRepository {
       });
       return right(unit);
     } on FirebaseException catch (e) {
+      print(e.message);
       if (e.message!.contains('PERMISSION_DENIED')) {
         return left(const FirebaseFirestoreFailure.insufficientPermission());
       } else if (e.message!.contains('NOT_FOUND')) {
@@ -177,6 +185,7 @@ class ProjectRepository implements IProjectRepository {
   Future<Either<FirebaseFirestoreFailure, Unit>> createTask(
       Task task, DocumentReference reference) async {
     try {
+
       await reference.update({
         "tasks": FieldValue.arrayUnion([TaskDto.fromDomain(task).toJson()])
       });

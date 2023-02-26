@@ -11,7 +11,7 @@ abstract class IProjectRepository{
   Future<Either<FirebaseFirestoreFailure, Unit>>deleteProjectMember(Project project,User user);
   Future<Either<FirebaseFirestoreFailure, Unit>>updateProject(Project project);
   Future<Either<FirebaseFirestoreFailure, Unit>>quitProject(Project project);
-  Future<Either<FirebaseFirestoreFailure, Unit>>createProject(Project project);
+  Future<Either<FirebaseFirestoreFailure, Unit>>createProject(Project project,{String? documentId});
   Future<Either<FirebaseFirestoreFailure, Unit>>deleteProject(Project project);
   Future<Either<FirebaseFirestoreFailure, Unit>>updateTask(Task task,DocumentReference documentReference,Task initialTask);
   Future<Either<FirebaseFirestoreFailure, Unit>>createTask(Task task,DocumentReference documentReference);

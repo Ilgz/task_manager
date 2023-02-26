@@ -7,6 +7,9 @@ part 'user.freezed.dart';
 abstract class User with _$User{
   factory User({required UserName userName, required EmailAddress emailAddress,required DocumentReference reference})=_User;
   
-  factory User.empty() {
-    return User(userName: UserName("User",),emailAddress: EmailAddress("user@gmail.com"),reference: FirebaseFirestore.instance.dummyRef);}
+  factory User.empty({
+    FirebaseFirestore? firebaseFirestore
+  }) {
+    final dummyRef=(firebaseFirestore??FirebaseFirestore.instance).dummyRef;
+    return User(userName: UserName("User",),emailAddress: EmailAddress("user@gmail.com"),reference: dummyRef);}
 }

@@ -1,13 +1,12 @@
 // app_injectable_module.dart
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-@Environment(Environment.prod)
+@Scope(Environment.prod)
 @module
 abstract class AppInjectableProdModule {
   @lazySingleton
