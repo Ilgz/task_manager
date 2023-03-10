@@ -11,7 +11,6 @@ import 'package:task_manager/presentation/users/users_overview/widgets/user_icon
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     context.read<ProfileWatcherCubit>().getSignedInUser();

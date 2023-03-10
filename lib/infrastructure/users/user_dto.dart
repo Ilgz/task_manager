@@ -13,6 +13,7 @@ abstract class UserDto implements _$UserDto {
       {required String name,
         required String email,
         required List<String> nameSearch,
+        required List<String> fcmTokens,
         @DocumentReferenceConverter()
         @JsonKey(ignore: true)
         DocumentReference? reference,}) = _UserDto;
@@ -23,7 +24,8 @@ abstract class UserDto implements _$UserDto {
   factory UserDto.fromDomain(User user,List<String> nameSearch) => UserDto(
       name: user.userName.getOrCrash(),
       email: user.emailAddress.getOrCrash(),
-      nameSearch: nameSearch
+      nameSearch: nameSearch,
+      fcmTokens: []
       );
 
   factory UserDto.fromFirestore(final doc) {

@@ -29,7 +29,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         temp = temp + nameStr[i].toLowerCase();
         caseSearchList.add(nameStr.toLowerCase().substring(0,2)+temp);
       }
-      await _firebaseFirestore.userCollection.doc(userId).set(UserDto(name: nameStr, email: emailAddressStr,nameSearch: caseSearchList).toJson());
+      await _firebaseFirestore.userCollection.doc(userId).set(UserDto(name: nameStr, email: emailAddressStr,nameSearch: caseSearchList,fcmTokens: []).toJson());
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {

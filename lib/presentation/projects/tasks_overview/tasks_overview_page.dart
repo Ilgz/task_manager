@@ -15,7 +15,6 @@ class TasksOverviewPage extends StatelessWidget {
   const TasksOverviewPage({Key? key, required this.initialProject})
       : super(key: key);
   final Project initialProject;
-
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
