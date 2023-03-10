@@ -70,29 +70,37 @@ class SignInPage extends StatelessWidget {
                         TextFormField(
                           style: Theme.of(context).textTheme.bodyText1,
                           cursorColor: Theme.of(context).primaryColor,
-                          decoration: const InputDecoration(
-                             labelText: 'Password',
+
+                          decoration: InputDecoration(
+                              labelText: 'Password',
                               isDense: true,
                               border: UnderlineInputBorder(),
-                              contentPadding: EdgeInsets.symmetric(vertical: 5)),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  state.showPassword ? Icons.visibility_off : Icons.visibility,
+                                ),
+                                onPressed: () {
+                                  context.read<SignInFormBloc>().add(SignInFormEvent.showPasswordChanged());
+                                },
+                              ),
+                              contentPadding:
+                              EdgeInsets.symmetric(vertical: 5)),
                           autocorrect: false,
-                          onChanged: (value) =>
-                              context
-                                  .read<SignInFormBloc>()
-                                  .add(SignInFormEvent.passwordChanged(value)),
-                          obscureText: true,
-                          validator: (_) =>
-                              context
-                                  .read<SignInFormBloc>()
-                                  .state
-                                  .password
-                                  .value
-                                  .fold(
-                                      (f) =>
-                                      f.maybeMap(
-                                          shortPassword: (value) => 'Short password',
-                                          orElse: () => null),
-                                      (r) => null),
+                          onChanged: (value) => context
+                              .read<SignInFormBloc>()
+                              .add(SignInFormEvent.passwordChanged(value)),
+                          obscureText: state.showPassword,
+                          validator: (_) => context
+                              .read<SignInFormBloc>()
+                              .state
+                              .password
+                              .value
+                              .fold(
+                                  (f) => f.maybeMap(
+                                  shortPassword: (value) =>
+                                  'Short password',
+                                  orElse: () => null),
+                                  (r) => null),
                         ),
                         const SizedBox(
                           height: 16,

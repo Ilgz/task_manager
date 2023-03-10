@@ -25,7 +25,9 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           },
           signInWithEmailAndPasswordPressed: (e)async {
           await  _performActionOnAuthFacadeWithEmailAndPassword(emit,_authFacade.signInWithEmailAndPassword);
-          },
+          }, showPasswordChanged: (e){
+        emit(state.copyWith(showPassword: !state.showPassword));
+      },
           );
     });
   }
