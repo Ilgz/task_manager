@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/application/auth/auth_bloc.dart';
 import 'package:task_manager/application/auth/profile_watcher/profile_watcher_cubit.dart';
@@ -35,13 +36,18 @@ class AppWidget extends StatelessWidget {
         child: BlocBuilder<ThemeSwitcherCubit, ThemeSwitcherState>(
           buildWhen: (p, c) => p.isDark != c.isDark,
           builder: (context, state) {
-            return MaterialApp.router(
-                routerConfig: goRouter,
-                title: "TaskManager",
-                debugShowCheckedModeBanner: false,
-                themeMode: state.isDark ? ThemeMode.dark : ThemeMode.light,
-                darkTheme: darkTheme,
-                theme: lightTheme);
+            return AnnotatedRegion<SystemUiOverlayStyle>(
+              value: SystemUiOverlayStyle(
+                statusBarColor:state.isDark?AppColorConstants.darkPrimaryColor:AppColorConstants.lightPrimaryColor, // set your desired status bar color here
+              ),
+              child: MaterialApp.router(
+                  routerConfig: goRouter,
+                  title: "TaskManager",
+                  debugShowCheckedModeBanner: false,
+                  themeMode: state.isDark ? ThemeMode.dark : ThemeMode.light,
+                  darkTheme: darkTheme,
+                  theme: lightTheme),
+            );
           },
         ));
   }
