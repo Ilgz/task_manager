@@ -18,8 +18,7 @@ import 'package:task_manager/infrastructure/users/user_dto.dart';
 class ProjectRepository implements IProjectRepository {
   final FirebaseFirestore firebaseFirestore;
   final IAuthFacade _authFacade;
-  final bool isTest;
-  ProjectRepository(this.firebaseFirestore, this._authFacade,{this.isTest=false});
+  ProjectRepository(this.firebaseFirestore, this._authFacade,);
 
   @override
   Stream<Either<FirebaseFirestoreFailure, List<Project>>> watchAllProjects() async* {
